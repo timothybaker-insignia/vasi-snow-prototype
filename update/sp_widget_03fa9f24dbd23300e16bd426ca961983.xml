@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, $rootScope, $timeout, spUtil, $location, spAriaFocusManager) {
+	var c = this;
+	$scope.showWidget = true;
+		
+	$scope.$on('data_table.click', function(e, parms){
+		$rootScope.$broadcast("selectionMade", parms)
+	});
+	
+	$rootScope.$on('showHomeWidget', function(event,data) {
+		$scope.showWidget = data.isSelected;	
+	});
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.column {
+  float: left;
+  width: 50%;
+}
+
+.row {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>home</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>Home</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function(){
+	var tableOptions = {};
+	tableOptions.table = "x_368247_vasi_prot_systems_inventory";
+	tableOptions.fields = "id,name,system_acronym,criticality,type,sponsor_organization,status"
+	tableOptions.o="id";
+	tableOptions.d= "asc";
+	//options.filter=data.filter;
+	tableOptions.window_size=5;
+	tableOptions.view = 'Default view';
+	tableOptions.headerTitle = " ";
+	tableOptions.show_breadcrumbs=true;
+	
+	var organizationReportOptions = {
+		"report_id": "d2cc3b2edb023300e16bd426ca9619bd",
+		"rectangle_id": "organizationReport",
+		"widget_parameters" : "{ \"report_id\": {\"value\": \"d2cc3b2edb023300e16bd426ca9619bd\",\"displayValue\": \" \"},\"show_title\": {\"value\": \"true\",\"displayValue\": \"true\"}}"
+	};
+	var criticalityReportOptions = {
+		"report_id": "bce18432db423300e16bd426ca961904",
+		"rectangle_id": "criticalityReport",
+		"widget_parameters" : "{ \"report_id\": {\"value\": \"bce18432db423300e16bd426ca961904\",\"displayValue\": \" \"},\"show_title\": {\"value\": \"true\",\"displayValue\": \"true\"}}"
+	};
+	
+	data.dataTableWidget = $sp.getWidget('widget-data-table', tableOptions);
+	data.organizationReportWidget = $sp.getWidget('report', organizationReportOptions);
+	data.criticalityReportWidget = $sp.getWidget('report', criticalityReportOptions);
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-06-24 16:38:07</sys_created_on>
+        <sys_id>03fa9f24dbd23300e16bd426ca961983</sys_id>
+        <sys_mod_count>254</sys_mod_count>
+        <sys_name>Home</sys_name>
+        <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+        <sys_update_name>sp_widget_03fa9f24dbd23300e16bd426ca961983</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-06-28 13:24:08</sys_updated_on>
+        <template><![CDATA[  		
+<div ng-if="showWidget">
+	<div class="panel major-container">
+    <div class="panel-heading">
+      <h1>Systems Inventory</h1>
+    </div>
+    <div class="panel-body">
+      <div>
+        <sp-widget widget="data.dataTableWidget"></sp-widget>
+      </div>
+    </div>
+  </div>
+  <div class="panel minor-container">
+    <div class="row">
+      <div class="column">
+        <div>
+    		  <div class="panel-heading row">
+      		  <h2>Systems by Organization</h2>
+    		  </div>
+    	    <div class="panel-body row">
+        		<sp-widget widget="data.organizationReportWidget"></sp-widget>
+          </div>
+        </div>
+  	  </div>
+      <div class="column">
+        <div>
+    		  <div class="panel-heading row">
+      		  <h2>Systems by Criticality</h2>
+    		  </div>
+    	    <div class="panel-body row">
+        		<sp-widget widget="data.criticalityReportWidget"></sp-widget>
+          </div>
+        </div>
+   	  </div>
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

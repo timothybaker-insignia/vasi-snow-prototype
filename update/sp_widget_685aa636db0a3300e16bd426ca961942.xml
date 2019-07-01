@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, $rootScope, $timeout, spUtil) {
+	var c = this;
+	$scope.showWidget = false;
+	
+	c.fetch = function(sys_id ,isSelected){
+		c.server.get({id: sys_id}).then(function(response){
+			c.system = response.data.system;
+			c.parentExists = response.data.parentExists;
+			c.childExists = response.data.parentExists;
+			var parentIds = response.data.parentIds;
+			var childIds = response.data.childIds;
+			c.setWidgets(parentIds, childIds);
+			$scope.showWidget = isSelected;
+		});
+	};
+	
+	$rootScope.$on('showHierarchyWidget', function(event,data) {	
+		var sys_id = data.selectedSystem.sys_id;
+		var isSelected = data.isSelected;
+		c.fetch(sys_id, isSelected);
+	});
+	
+	c.setWidgets = function(parentIds, childIds){
+		var parentTableOptions = {};
+		parentTableOptions.table = "x_368247_vasi_prot_systems_inventory";
+		parentTableOptions.fields = "id,name,system_acronym,criticality,type,sponsor_organization,status"
+		parentTableOptions.o="id";
+		parentTableOptions.d= "asc";
+		parentTableOptions.filter=parentIds;
+		parentTableOptions.window_size=3;
+		parentTableOptions.view = 'Default view';
+		parentTableOptions.headerTitle = " ";
+		parentTableOptions.enable_filter = true;
+		parentTableOptions.show_breadcrumbs = false;
+	
+		var childTableOptions = {};
+		childTableOptions.table = "x_368247_vasi_prot_systems_inventory";
+		childTableOptions.fields = "id,name,system_acronym,criticality,type,sponsor_organization,status"
+		childTableOptions.o="id";
+		childTableOptions.d= "asc";
+		childTableOptions.filter=childIds;
+		childTableOptions.window_size=3;
+		childTableOptions.view = 'Default view';
+		childTableOptions.headerTitle = " ";
+		childTableOptions.enable_filter = true;
+		childTableOptions.show_breadcrumbs = false;
+		
+		spUtil.get('widget-data-table', parentTableOptions).then(function(response){
+			c.parentTableWidget = response;
+		});
+		
+		spUtil.get('widget-data-table', childTableOptions).then(function(response){
+			c.childTableWidget = response;
+		});	
+	}
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>#optionsMenu {
+  display: none;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>hierarchy_view</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Hierarchy View</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function(){		
+	if(input){
+		var system = {};
+		var gr = new GlideRecord('x_368247_vasi_prot_systems_inventory');
+		if(gr.get(input.id) == true){
+			for(var field in gr){
+				system[field] = gr.getDisplayValue(field);
+			}
+			data.system = system;
+		}
+		if(data.system === undefined) {
+			data.parentIds = "";
+			data.parentExists = false;
+		}
+		else {
+			if (data.system.parent_systems == "") {
+				data.parentIds = "";
+				data.parentExists = false;				
+			}
+			else {
+				data.parentIds = "id="+data.system.parent_systems.replace(new RegExp(',','g'),'^ORid=');
+				data.parentExists = true;
+			}
+		}
+		if (data.system === undefined){
+			data.childIds = "";
+			data.childExists = false;
+		}
+		else{
+			if(data.system.child_systems == "") {
+				data.childIds = "";
+				data.childExists = false;
+			}
+			else {
+				data.childIds = "id="+data.system.child_systems.replace(new RegExp(',','g'),'^ORid=');
+				data.childExists = true;
+			}
+		}	
+	}
+	else {
+		data.system = {};
+		data.parentIds = "";
+		data.childIds = "";
+		data.parentExists = false;
+		data.childExists = false;
+		data.componentExists = false;
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-06-19 02:20:19</sys_created_on>
+        <sys_id>685aa636db0a3300e16bd426ca961942</sys_id>
+        <sys_mod_count>273</sys_mod_count>
+        <sys_name>Hierarchy View</sys_name>
+        <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+        <sys_update_name>sp_widget_685aa636db0a3300e16bd426ca961942</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-06-27 16:18:43</sys_updated_on>
+        <template><![CDATA[<div>
+  <div ng-if="showWidget == true">
+	<div class="panel major-container">
+      <div class="panel-heading">
+      	<h1>
+          {{c.system['name']}} - #{{c.system['id']}}
+      	</h1>
+      </div>
+    </div>
+    <div class="panel minor-container">
+      <div class="panel-header row">
+      	<h2>
+          Parent Systems
+      	</h2>
+      </div>
+      <div class="panel-body row" ng-show="c.parentExists">
+				<sp-widget widget="c.parentTableWidget"></sp-widget>
+      </div>
+    </div>
+    <div class="panel minor-container">
+      <div class="panel-header row">
+      	<h2>
+          Child Systems
+      	</h2>
+      </div>
+      <div class="panel-body row" ng-show="c.childExists">
+				<sp-widget widget="c.childTableWidget" ></sp-widget>
+      </div>
+    </div>
+    <div class="panel minor-container">
+      <div class="panel-header row">
+      	<h2>
+          System Components
+      	</h2>
+      </div>
+      <div class="panel-body row" ng-show="data.componentExists">
+        
+      </div>
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

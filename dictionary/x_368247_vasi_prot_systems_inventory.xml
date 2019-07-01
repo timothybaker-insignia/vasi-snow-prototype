@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Systems Inventory" max_length="40" name="x_368247_vasi_prot_systems_inventory" type="collection">
+        <element label="Child Systems" max_length="200" name="child_systems" type="string"/>
+        <element choice="3" default="Basic" label="Criticality" max_length="40" name="criticality" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Premium" sequence="0" value="d"/>
+                <element inactive_on_update="false" label="High" sequence="1" value="c"/>
+                <element inactive_on_update="false" label="Medium" sequence="2" value="b"/>
+                <element inactive_on_update="false" label="Basic" sequence="3" value="a"/>
+            </choice>
+        </element>
+        <element label="Description" max_length="1000" name="description" type="string"/>
+        <element attributes="isOrder," display="true" label="ID" max_length="40" name="id" type="string"/>
+        <element label="Information Owner" max_length="200" name="information_owner" type="string"/>
+        <element label="System Name" max_length="40" name="name" type="string"/>
+        <element label="Parent Systems" max_length="200" name="parent_systems" reference_qual="idSTARTSWITH^EQ" reference_qual_condition="idSTARTSWITH^EQ" type="string"/>
+        <element label="Product Line" max_length="40" name="product_line" type="string"/>
+        <element label="Receiving Organization" max_length="40" name="receiving_organization" type="string"/>
+        <element choice="3" default="Veterans Health Administration" label="Sponsor Organization" max_length="200" name="sponsor_organization" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Corporate" value="e"/>
+                <element inactive_on_update="false" label="National Cemetary Administration" value="d"/>
+                <element inactive_on_update="false" label="Office of Information and Technology" value="c"/>
+                <element inactive_on_update="false" label="Veterans Benefits Administration" value="b"/>
+                <element inactive_on_update="false" label="Veterans Health Administration" value="a"/>
+            </choice>
+        </element>
+        <element label="Status" max_length="40" name="status" type="string"/>
+        <element label="System Acronym" max_length="10" name="system_acronym" type="string"/>
+        <element label="System Components" max_length="200" name="system_components" type="string"/>
+        <element label="System Stakeholders" max_length="2000" name="system_stakeholders" type="string"/>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <element label="Transformation Status" max_length="40" name="transformation_status" type="string"/>
+        <element label="Type" max_length="40" name="type" type="string"/>
+        <index name="index">
+            <element name="sys_class_name"/>
+        </index>
+    </element>
+</database>

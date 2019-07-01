@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, $rootScope) {
+	var c = this;
+	$scope.showWidget = false;
+	
+	c.fetch = function(sys_id, isSelected){
+		c.server.get({id: sys_id}).then(function(response){
+			c.system = response.data.system;		
+			$scope.showWidget = isSelected;
+			deleteRow();
+			addRow(c.system['information_owner'], c.system['system_stakeholders']);
+		});
+	};
+	
+	$rootScope.$on('showSystemWidget', function(event,data) {
+		c.fetch(data.selectedSystem.sys_id, data.isSelected);
+	});
+	
+	function addRow(information_owner, system_stakeholders) {
+		var table = document.getElementById('information_owner');
+		var rowCount = table.rows.length;
+		var row = table.insertRow(rowCount);
+		row.insertCell(0).innerHTML = information_owner['name'];
+		row.insertCell(1).innerHTML = information_owner['title'];
+		row.insertCell(2).innerHTML = information_owner['organization'];
+		row.insertCell(3).innerHTML = information_owner['phone'];
+		row.insertCell(4).innerHTML = information_owner['email'];
+		
+		for(var i=0; i<system_stakeholders.length; i++) {
+			table = document.getElementById('system_stakeholders');
+			rowCount = table.rows.length;
+			row = table.insertRow(rowCount);
+			row.insertCell(0).innerHTML = system_stakeholders[i]['name'];
+			row.insertCell(1).innerHTML = system_stakeholders[i]['type'];
+			row.insertCell(2).innerHTML = system_stakeholders[i]['title'];
+			row.insertCell(3).innerHTML = system_stakeholders[i]['organization'];
+			row.insertCell(4).innerHTML = system_stakeholders[i]['phone'];
+			row.insertCell(5).innerHTML = system_stakeholders[i]['email'];
+		}
+	}
+	
+	function deleteRow() {
+		var table = document.getElementById('information_owner');
+		var rowCount = table.rows.length;
+        while(rowCount > 1) {
+			table.deleteRow(rowCount-1);
+			rowCount = table.rows.length;
+		}
+		
+		table = document.getElementById('system_stakeholders');
+		rowCount = table.rows.length;
+        while(rowCount > 1) {
+			table.deleteRow(rowCount-1);
+			rowCount = table.rows.length;
+		}
+    }
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.column {
+  float: left;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.top {
+  width: 20%;
+}
+
+.bottomleft {
+  width: 60%; 
+}
+
+.bottomright {
+  width: 20%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.row {
+  padding-left: 30px; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+td {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-top: 1px solid #212121;
+  border-bottom: 1px solid #212121; 
+  padding-left: 10px;
+}
+
+table {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border: 2px solid #212121;
+  background-color: #ffffff;
+}
+
+th {
+   padding-left: 10px;
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>system_view</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>System View</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function(){	
+	data.system = {};
+	
+	if(input){
+		var system = {};
+		var gr = new GlideRecord('x_368247_vasi_prot_systems_inventory');
+		if(gr.get(input.id) == true){
+			for(var field in gr){
+				system[field] = gr.getDisplayValue(field);
+			}
+			var information_owner = getFormattedInformationOwner(system['information_owner']);
+			var system_stakeholders = getFormattedSystemStakeholders(system['system_stakeholders']);
+			system['information_owner'] = information_owner;
+			system['system_stakeholders'] = system_stakeholders;
+			data.system = system;
+		}
+	}
+	else{
+		data.system = {};
+	}
+	
+	function getFormattedInformationOwner(original){
+		var keys = ['name', 'title', 'organization', 'phone', 'email'];
+		var values = original.split(',,,,');
+		var io = {};
+		for(var i=0; i<keys.length; i++){
+			io[keys[i]] = values[i];
+		}
+		return io;
+	}
+	
+	function getFormattedSystemStakeholders(original) {
+		var stakeholders = original.split('::::');
+		var sh = [];
+		for(var j=0; j<stakeholders.length; j++) {
+			var keys = ['name', 'type', 'title', 'organization', 'phone', 'email'];
+			var values = stakeholders[j].split(',,,,');
+			var stakeholder = {};
+			for(var i=0; i<keys.length; i++){
+				stakeholder[keys[i]] = values[i];
+			}
+			sh.push(stakeholder);
+		}
+		return sh;		
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-06-18 20:10:04</sys_created_on>
+        <sys_id>4595dd7edb063300e16bd426ca9619a2</sys_id>
+        <sys_mod_count>257</sys_mod_count>
+        <sys_name>System View</sys_name>
+        <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+        <sys_update_name>sp_widget_4595dd7edb063300e16bd426ca9619a2</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-06-28 13:08:49</sys_updated_on>
+        <template><![CDATA[<div ng-show="showWidget">
+	<div class="panel major-container">
+      <div class="panel-heading">
+      	<h1>
+          {{c.system['name']}} - #{{c.system['id']}}
+      	</h1>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="column top">
+            <h3> System Status: </h3>
+            <p1> {{c.system['status']}} </p1>
+          </div>
+          <div class="column top">
+            <h3> System Criticality: </h3>
+            <p1> {{c.system['criticality']}} </p1>
+          </div>
+          <div class="column top">
+            <h3> System Type: </h3>
+            <p1> {{c.system['type']}} </p1>
+          </div>
+          <div class="column top">
+            <h3> Transformation Status: </h3>
+            <p1> {{c.system['transformation_status']}} </p1>
+          </div>
+          <div class="column top">
+            <h3> Product Line: </h3>
+            <p1> {{c.system['product_line']}} </p1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column bottomleft">
+            <h3> Description: </h3>
+            <p1> {{c.system['description']}} </p1>
+          </div>
+          <div class="column bottomright">
+            <h3> Sponsor Organization </h3>
+            <p1> {{c.system['sponsor_organization']}} </p1>
+          </div>
+          <div class="column bottomright">
+            <h3> Receiving Organization </h3>
+            <p1> {{c.system['receiving_organization']}} </p1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel minor-container">
+      <div class="panel-header">
+      	<h2>
+          VASI Information Owner (VASI IO)
+      	</h2>
+      </div>
+      <div class="panel-body">
+        <table id="information_owner">
+    		<tr>
+              <th><h4>Name</h4></th>
+        	  <th><h4>Title</h4></th>
+              <th><h4>Organization</h4></th>
+              <th><h4>Phone</h4></th>
+              <th><h4>Email</h4></th>
+    		</tr>
+		</table>
+      </div>
+    </div>
+    <div class="panel minor-container">
+      <div class="panel-header">
+      	<h2>
+          System Stakeholders
+      	</h2>
+      </div>
+      <div class="panel-body">
+        <table id="system_stakeholders">
+    		  <tr>
+        	  <th><h4>Name</h4></th>
+        	  <th><h4>Type</h4></th>
+              <th><h4>Title</h4></th>
+              <th><h4>Organization</h4></th>
+              <th><h4>Phone</h4></th>
+              <th><h4>Email</h4></th>
+    		  </tr>
+		    </table>
+      </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

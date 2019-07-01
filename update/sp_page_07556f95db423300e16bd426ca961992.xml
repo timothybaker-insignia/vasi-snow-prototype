@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page">
+    <sp_page action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <css>body
+{
+  background-color: #112e51;
+}
+
+.nav-container {
+  background-color: #ffffff;
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;  
+}
+
+.blank-container {
+  background-color: #112e51;
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.minor-container {
+  background-color: #fff1d2;
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.major-container {
+  background-color: #dce4ef;
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bolder;
+  border-bottom: 2px solid #112e51;
+  padding-bottom: 5px;
+  color: #205493;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: bolder;
+  color: #981b1e; 
+  float: left;
+  padding-left: 30px;
+}
+
+h3 {
+  font-size: 1.17em;
+  font-weight: bolder;
+  color: #212121; 
+}
+
+h4 {
+  font-size: 1em;
+  font-weight: bolder;
+  color: #212121;
+}
+
+h5 {
+  font-size: 0.83em;
+	font-weight: bolder;
+  color: #212121;
+}
+
+p1 {
+  font-size: 1em;
+  color: #212121;
+  display: block;
+  margin-top: 0.3m;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+}
+</css>
+        <draft>false</draft>
+        <dynamic_title_structure/>
+        <id>vasi_prototype</id>
+        <internal>false</internal>
+        <public>false</public>
+        <roles/>
+        <short_description/>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-06-14 14:47:58</sys_created_on>
+        <sys_id>07556f95db423300e16bd426ca961992</sys_id>
+        <sys_mod_count>82</sys_mod_count>
+        <sys_name>vasi_prototype</sys_name>
+        <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+        <sys_update_name>sp_page_07556f95db423300e16bd426ca961992</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-06-28 13:23:32</sys_updated_on>
+        <title>VASI Prototype</title>
+    </sp_page>
+    <sys_translated_text action="delete_multiple" query="documentkey=07556f95db423300e16bd426ca961992"/>
+</record_update>

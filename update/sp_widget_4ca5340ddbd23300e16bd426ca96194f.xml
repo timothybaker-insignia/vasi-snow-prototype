@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($rootScope, $scope) {
+	var c = this;
+	c.activeTab = 'tab0';
+	c.data.selectedSystem = '';
+	
+	var showWidgetDict = {
+		0: 'showHomeWidget',
+		1: 'showSystemWidget',
+		2: 'showHierarchyWidget',
+		3: 'showBusinessWidget',
+		4: 'showTechnicalWidget',
+		5: 'showSecurityWidget',
+		6: 'showInterfaceWidget',
+		7: 'showDataWidget',
+		8: 'showAPIWidget'
+	};
+	
+	var isWidgetSelected = [true,false,false,false,false,false,false,false,false];
+	
+	function setAndGetSelectedSystem(selectedIndex, selected){
+		for(var i=0; i<selected.length; i++){
+			if(i == selectedIndex)
+				selected[i] = true;
+			else
+				selected[i] = false;
+		}
+		return selected;
+	}
+	
+	$rootScope.$on('selectionMade', function(event,data) {
+		if(c.activeTab == 'tab0'){
+			c.data.selectedSystem = data;
+			isWidgetSelected = setAndGetSelectedSystem(1, isWidgetSelected);
+			for(var i=0; i<c.data.tabs.length; i++){
+				c.data.isSelected = isWidgetSelected[i];
+				$rootScope.$broadcast(showWidgetDict[i], c.data);
+			}
+			c.activeTab = 'tab1';
+			c.data.tabs[1].className = 'active sub';
+			for(var j=0; j<c.data.tabs.length; j++){
+				if(j == 1)
+					continue;
+				if(j !=0)
+					c.data.tabs[j].className = 'sub';
+				else
+					c.data.tabs[j].className = 'home';
+			}
+		}
+	});
+	
+	c.showTab = function(tab){
+		var tabIndex = Number(tab.charAt(3));
+		isWidgetSelected = setAndGetSelectedSystem(tabIndex, isWidgetSelected);
+		if(tab == 'tab0'){
+			c.data.tabs[tabIndex].className = 'active';
+			for(var i=0; i<c.data.tabs.length; i++){
+				c.data.isSelected = isWidgetSelected[i];
+				$rootScope.$broadcast(showWidgetDict[i], c.data);
+			}
+		}
+		else{
+			c.data.tabs[tabIndex].className = 'active sub';
+			for(var m=0; m<c.data.tabs.length; m++){
+				c.data.isSelected = isWidgetSelected[m];
+				$rootScope.$broadcast(showWidgetDict[m], c.data);
+			}
+		}
+		c.activeTab = tab;
+		for(var k=0; k<c.data.tabs.length; k++){
+			if(k == tabIndex)
+				continue;
+			if(tabIndex != 0){
+				if(k !=0)
+					c.data.tabs[k].className = 'sub';
+				else
+					c.data.tabs[k].className = 'home';
+			}
+			else
+				c.data.tabs[k].className = 'disabled';
+		}
+	};
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.widget-data-table .clearfix{
+	display: none;
+} 
+ 
+  .cm-right-pane {
+    .cm-widget-tabs {
+      padding: 15px 0px 0px;
+      .nav-tabs {
+        border-bottom: 1px solid #ddd;
+        margin-bottom: -1px;
+      }     
+      .nav-tabs &gt; li {
+        padding: 0px 30px;
+        font-size : 18px;
+        font-weight: 400;
+        line-height: 29px;
+      }
+      .nav-tabs &gt; li.widget-collapse {
+        padding-right: 0px;
+      }
+      .nav-tabs  &gt; li:not(:last-of-type){
+         //margin-right: 20px;
+      }
+      .nav-tabs  &gt; li  &gt; a {
+        border: none;
+        padding: 10px 20px 10px 20px;
+      }
+      .nav-tabs  &gt; li.active {
+        border-bottom: 2px solid $link-color;
+        a {
+          color: $brand-primary;
+        }
+      }
+      .nav-tabs &gt; li.home{
+      	/*background-color: #DCDCDC;*/
+  		/*border: 12px 12px 12px solid black;*/
+  		/*height: 80px;*/
+	  }
+      .nav-tabs  &gt; li.active &gt; a {
+        background-color: inherit;
+      }
+	  .nav-tabs &gt; li.disabled{
+    	pointer-events:none;
+  		opacity:0.0;
+	  }
+	  .nav-tabs &gt; li.active.sub{
+   		/*margin: 30px 0px 0px;*/
+        background-color: #e6f2ff;
+	  }
+      .nav-tabs &gt; li.sub{
+ 		/*margin: 30px 0px 0px;*/
+        //background-color: #e6f2ff;
+        //background-color: #f9dede;
+        background-color: #f1f1f1;
+	  }
+      .hover-effect:hover {
+        background-color: initial;
+        border-bottom: 2px solid $link-color;
+        cursor: pointer;
+      }
+    }
+  }
+    .cm-widget-body {
+      padding-top: 20px;
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-bottom: 0px;
+    } 
+      </css>
+        <data_table>sp_instance_table</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list>sp_page</field_list>
+        <has_preview>false</has_preview>
+        <id>tabs</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Tabs</name>
+        <option_schema>[{"name":"link1","section":"Behavior","default_value":"","label":"Tab 1 link","type":"string"},&#13;
+{"name":"link2","section":"Behavior","default_value":"","label":"Tab 2 link","type":"string"},&#13;
+{"name":"link3","section":"Behavior","default_value":"","label":"Tab 3 link","type":"string"},&#13;
+{"name":"link4","section":"Behavior","default_value":"","label":"Tab 4 link","type":"string"},&#13;
+{"name":"link5","section":"Behavior","default_value":"","label":"Tab 5 link","type":"string"},&#13;
+{"name":"link6","section":"Behavior","default_value":"","label":"Tab 6 link","type":"string"},&#13;
+{"name":"link7","section":"Behavior","default_value":"","label":"Tab 7 link","type":"string"},&#13;
+{"name":"link8","section":"Behavior","default_value":"","label":"Tab 8 link","type":"string"},&#13;
+{"name":"link9","section":"Behavior","default_value":"","label":"Tab 9 link","type":"string"}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {	
+	var tabs = [];
+	var links = ['Home','System View','Hierarchy View','Business View','Technical View','Security View','Interface View','Data View','API View'];
+	for(var i=0;i<links.length;i++){
+		var tab = {};
+		tab.tabTitle = links[i];
+		tab.tabName = 'tab'+i;
+		tab.className = '';
+		tabs.push(tab);
+  }
+	
+	tabs[0].className = 'active';
+	for(var j=1; j<tabs.length; j++){
+		tabs[j].className = 'disabled';
+	}
+	data.tabs = tabs ;
+		
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-06-25 17:36:48</sys_created_on>
+        <sys_id>4ca5340ddbd23300e16bd426ca96194f</sys_id>
+        <sys_mod_count>30</sys_mod_count>
+        <sys_name>Tabs</sys_name>
+        <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+        <sys_update_name>sp_widget_4ca5340ddbd23300e16bd426ca96194f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-06-27 16:15:12</sys_updated_on>
+        <template><![CDATA[<div>
+	<div class="panel panel-{{::options.panel_type}} nav-container widget-toggle csm-widget cm-right-pane">
+        <div class="panel-heading cm-widget-tabs" role="tabpanel">
+          <ul class="nav nav-tabs">
+                 <li role="tab" ng-repeat="tab in data.tabs" class="hover-effect cm-subs-tab {{tab.className}}"  ng-click="c.showTab(tab.tabName, $event)">
+              <a class="csm-link-disabled" tabindex="0">{{::tab.tabTitle}}</a>
+            </li>                
+          </ul>
+        </div>    
+	</div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

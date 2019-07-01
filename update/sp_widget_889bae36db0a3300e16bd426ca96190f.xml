@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, $rootScope, $timeout) {
+  var c = this;
+	$scope.showWidget = false;
+	
+	c.fetch = function(sys_id ,isSelected){
+		c.server.get({id: sys_id}).then(function(response){
+			c.system = response.data.system;
+			$scope.showWidget = isSelected;
+		});
+	};
+	
+  $rootScope.$on('showAPIWidget', function(event,data) {
+		var sys_id = data.selectedSystem.sys_id;
+		var isSelected = data.isSelected;
+		c.fetch(sys_id, isSelected);
+  });	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>api_view</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>API View</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	if(input){
+		var system = {};
+		var gr = new GlideRecord('x_368247_vasi_prot_systems_inventory');
+		if(gr.get(input.id) == true){
+			for(var field in gr){
+				system[field] = gr.getDisplayValue(field);
+			}
+			data.system = system;
+		}
+	}
+	else {
+		data.system = {};
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-06-19 02:25:45</sys_created_on>
+        <sys_id>889bae36db0a3300e16bd426ca96190f</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>API View</sys_name>
+        <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+        <sys_update_name>sp_widget_889bae36db0a3300e16bd426ca96190f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-06-28 14:06:58</sys_updated_on>
+        <template><![CDATA[<div>
+	<div ng-if="showWidget == true">
+		<div class="panel major-container">
+      <div class="panel-heading">
+      	<h1>
+          {{c.system['name']}} - #{{c.system['id']}}
+      	</h1>
+      </div>
+    </div>
+    <div class="panel minor-container">
+      <div class="panel-heading">
+        <h2>Associated System APIs</h2>
+      </div> 
+      <div class="panel-body">
+        
+      </div>
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>
