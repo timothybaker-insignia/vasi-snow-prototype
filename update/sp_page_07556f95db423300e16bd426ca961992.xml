@@ -80,7 +80,7 @@ p1 {
 </css>
         <draft>false</draft>
         <dynamic_title_structure/>
-        <id>vasi_prototype</id>
+        <id>vasi</id>
         <internal>false</internal>
         <public>false</public>
         <roles/>
@@ -89,15 +89,15 @@ p1 {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-06-14 14:47:58</sys_created_on>
         <sys_id>07556f95db423300e16bd426ca961992</sys_id>
-        <sys_mod_count>82</sys_mod_count>
-        <sys_name>vasi_prototype</sys_name>
+        <sys_mod_count>83</sys_mod_count>
+        <sys_name>vasi</sys_name>
         <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
         <sys_policy/>
         <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
         <sys_update_name>sp_page_07556f95db423300e16bd426ca961992</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-06-28 13:23:32</sys_updated_on>
-        <title>VASI Prototype</title>
+        <sys_updated_on>2019-07-10 14:33:50</sys_updated_on>
+        <title>VASI</title>
     </sp_page>
     <sys_translated_text action="delete_multiple" query="documentkey=07556f95db423300e16bd426ca961992"/>
 </record_update>

@@ -50,24 +50,27 @@
 	tableOptions.fields = "id,name,system_acronym,criticality,type,sponsor_organization,status"
 	tableOptions.o="id";
 	tableOptions.d= "asc";
-	//options.filter=data.filter;
+	tableOptions.filter=data.filter;
 	tableOptions.window_size=5;
 	tableOptions.view = 'Default view';
-	tableOptions.headerTitle = " ";
+	tableOptions.headerTitle = "Systems";
+	tableOptions.enable_filter=true;
 	tableOptions.show_breadcrumbs=true;
+	tableOptions.show_keywords=true;
 	
 	var organizationReportOptions = {
 		"report_id": "d2cc3b2edb023300e16bd426ca9619bd",
 		"rectangle_id": "organizationReport",
 		"widget_parameters" : "{ \"report_id\": {\"value\": \"d2cc3b2edb023300e16bd426ca9619bd\",\"displayValue\": \" \"},\"show_title\": {\"value\": \"true\",\"displayValue\": \"true\"}}"
 	};
+	
 	var criticalityReportOptions = {
 		"report_id": "bce18432db423300e16bd426ca961904",
 		"rectangle_id": "criticalityReport",
 		"widget_parameters" : "{ \"report_id\": {\"value\": \"bce18432db423300e16bd426ca961904\",\"displayValue\": \" \"},\"show_title\": {\"value\": \"true\",\"displayValue\": \"true\"}}"
 	};
 	
-	data.dataTableWidget = $sp.getWidget('widget-data-table', tableOptions);
+	data.dataTableWidget = $sp.getWidget('clear_keywords_data_table', tableOptions);
 	data.organizationReportWidget = $sp.getWidget('report', organizationReportOptions);
 	data.criticalityReportWidget = $sp.getWidget('report', criticalityReportOptions);
 })();]]></script>
@@ -76,14 +79,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-06-24 16:38:07</sys_created_on>
         <sys_id>03fa9f24dbd23300e16bd426ca961983</sys_id>
-        <sys_mod_count>254</sys_mod_count>
+        <sys_mod_count>286</sys_mod_count>
         <sys_name>Home</sys_name>
         <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
         <sys_policy/>
         <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
         <sys_update_name>sp_widget_03fa9f24dbd23300e16bd426ca961983</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-06-28 13:24:08</sys_updated_on>
+        <sys_updated_on>2019-07-10 19:27:58</sys_updated_on>
         <template><![CDATA[  		
 <div ng-if="showWidget">
 	<div class="panel major-container">
@@ -91,7 +94,7 @@
       <h1>Systems Inventory</h1>
     </div>
     <div class="panel-body">
-      <div>
+      <div>        
         <sp-widget widget="data.dataTableWidget"></sp-widget>
       </div>
     </div>

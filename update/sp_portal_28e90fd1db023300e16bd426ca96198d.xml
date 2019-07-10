@@ -2,11 +2,11 @@
     <sp_portal action="INSERT_OR_UPDATE">
         <css_variables/>
         <default>false</default>
-        <homepage display_value="vasi_prototype">07556f95db423300e16bd426ca961992</homepage>
+        <homepage display_value="vasi">07556f95db423300e16bd426ca961992</homepage>
         <icon>30aa8b11db023300e16bd426ca9619d2</icon>
         <kb_knowledge_base/>
         <kb_knowledge_page/>
-        <login_page/>
+        <login_page display_value="login">6995a144cb11120000f8d856634c9c25</login_page>
         <logo>5057f4f6dbc23300e16bd426ca961952</logo>
         <notfound_page display_value="404">3c2c9063cb11020000f8d856634c9c1f</notfound_page>
         <quick_start_config/>
@@ -20,17 +20,17 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-06-14 12:50:48</sys_created_on>
         <sys_id>28e90fd1db023300e16bd426ca96198d</sys_id>
-        <sys_mod_count>11</sys_mod_count>
-        <sys_name>VASI-Prototype</sys_name>
+        <sys_mod_count>20</sys_mod_count>
+        <sys_name>VASI</sys_name>
         <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
         <sys_policy/>
         <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
         <sys_update_name>sp_portal_28e90fd1db023300e16bd426ca96198d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-06-18 17:58:55</sys_updated_on>
+        <sys_updated_on>2019-07-10 15:51:05</sys_updated_on>
         <theme display_value="Stock">79315153cb33310000f8d856634c9c4b</theme>
-        <title>VASI-Prototype</title>
-        <url_suffix>vasi-prototype</url_suffix>
+        <title>VASI</title>
+        <url_suffix>vasi</url_suffix>
     </sp_portal>
     <sys_translated_text action="delete_multiple" query="documentkey=28e90fd1db023300e16bd426ca96198d"/>
     <sys_attachment action="INSERT_OR_UPDATE">

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description/>
+        <ignore_cache>false</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_368247_vasi_prot.glide.entry.loggedin.page_ess</name>
+        <read_roles/>
+        <suffix>glide.entry.loggedin.page_ess</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-10 15:19:29</sys_created_on>
+        <sys_id>14f52d31dba23300e16bd426ca961981</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_368247_vasi_prot.glide.entry.loggedin.page_ess</sys_name>
+        <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+        <sys_update_name>sys_properties_14f52d31dba23300e16bd426ca961981</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-10 15:19:29</sys_updated_on>
+        <type>string</type>
+        <value>/vasi</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=14f52d31dba23300e16bd426ca961981"/>
+</record_update>

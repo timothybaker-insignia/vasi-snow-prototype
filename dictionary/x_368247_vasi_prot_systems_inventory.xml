@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Systems Inventory" max_length="40" name="x_368247_vasi_prot_systems_inventory" type="collection">
+    <element label="Systems Inventory" max_length="40" name="x_368247_vasi_prot_systems_inventory" text_index="true" type="collection">
         <element label="Child Systems" max_length="200" name="child_systems" type="string"/>
         <element choice="3" default="Basic" label="Criticality" max_length="40" name="criticality" type="choice">
             <choice>
