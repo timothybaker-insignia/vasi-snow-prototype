@@ -1,7 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[function() {  /* widget controller */  var c = this;}]]></client_script>
+        <client_script><![CDATA[function($scope) {
+  /* widget controller */
+  var c = this;
+	Status.innerHTML="";
+	Report.innerHTML="";
+	$scope.showInsert = false;
+	$scope.showOverwrite = false;
+	
+	window.readJson = function(event){
+		var recordFile = event.target.files[0];
+		var fileExt = recordFile.name.split('.').pop();
+		if(fileExt == 'json'){
+			var reader = new FileReader();
+			reader.readAsText(recordFile);
+			reader.onload = function(e) {
+				var jsonText = reader.result;
+				c.new_record=JSON.parse(jsonText);
+				var input = {};
+				input.record = c.new_record;
+				input.action = 'check_record';
+				c.server.get(input).then(function(response){
+					Report.innerHTML=response.data.report;
+				  if(response.data.record_exists){
+						if(response.data.record_contains_updates){
+							$scope.showOverwrite = true;
+						}
+						$scope.showInsert = false;
+						Status.innerHTML="<font color=green>Upload was successful - Record already exists.</font>";
+					}
+					else {
+						$scope.showInsert = true;
+						$scope.showOverwrite = false;
+						Status.innerHTML="<font color=green>Upload was successful - New record detected.</font>";
+					}
+				});
+			};
+		}
+		else {
+			Status.innerHTML="<font color='red'>Failed to upload! Invalid file format.</font>";
+			Report.innerHTML="";
+			$scope.showInsert = false;
+			$scope.showOverwrite = false;
+		}
+	}
+	
+	window.addSystem = function(event){
+		Status.innerHTML="";
+		Report.innerHTML="";
+		$scope.showInsert = false;
+		var input = {};
+		input.record = c.new_record;
+		input.action = 'insert_record';
+		c.server.get(input).then(function(response){
+			var sys_id=response.data.record_id;
+			if(sys_id.length == 32){
+				Report.innerHTML='<font color=green>Record inserted successfully!</font>'
+			}
+			else{
+				Report.innerHTML='<font color=red>Failed to insert record!</font>'
+			}		})
+	}
+	
+	window.updateSystem = function(event){
+		Status.innerHTML="";
+		Report.innerHTML="";
+		$scope.showOverwrite = false;
+		var input = {};
+		input.record = c.new_record;
+		input.action = 'update_record';
+		c.server.get(input).then(function(response){
+			var sys_id=response.data.record_id;
+			if(sys_id.length == 32){
+				Report.innerHTML='<font color=green>Record updated successfully!</font>'
+			}
+			else{
+				Report.innerHTML='<font color=red>Failed to update record!</font>'
+			}
+		})
+	}
+}]]></client_script>
         <controller_as>c</controller_as>
         <css/>
         <data_table>sp_instance</data_table>
@@ -17,28 +96,149 @@
         <option_schema/>
         <public>false</public>
         <roles/>
-        <script><![CDATA[(function() {  /* populate the 'data' object */  /* e.g., data.table = $sp.getValue('table'); */})();]]></script>
+        <script><![CDATA[(function() {
+	
+	formOptions = {};
+	formOptions.table = "x_368247_vasi_prot_systems_inventory";
+	//formOptions.sys_id = "";
+	formOptions.view = "Default View";
+	
+	data.addNewSystemWidget = $sp.getWidget("widget-form", formOptions)
+	
+	function updateRecord(record) {
+			var gr = new GlideRecord('x_368247_vasi_prot_systems_inventory');
+			gr.get('id', record.id);
+			for(var key in record){
+				gr[key] = record[key];
+			}				
+			return gr.update();
+	}
+	
+	function newRecord(nr) {
+		var gr = new GlideRecord('x_368247_vasi_prot_systems_inventory');
+		gr.initialize();
+		gr.id = nr.id;
+		gr.child_systems = nr.child_systems;
+		gr.description = nr.description;
+		gr.information_owner = nr.information_owner;
+		gr.name = nr.name;
+		gr.parent_systems = nr.parent_systems;
+		gr.product_line = nr.product_line;
+		gr.receiving_organization = nr.receiving_organization;
+		gr.sponsor_organization = nr.sponsor_organization;
+		gr.status = nr.status;
+		gr.system_acronym = nr.system_acronym;
+		gr.system_components = nr.system_components;
+		gr.system_stakeholders = nr.system_stakeholders;
+		gr.type = nr.type;
+		return gr.update();
+	}
+	
+	function systemExists(record) {
+		var gr = new GlideRecord('x_368247_vasi_prot_systems_inventory');
+		return gr.get('id', record.id);
+	}
+	
+	function glideRecordToObject(record){
+			var obj = {};
+			var gr = new GlideRecord('x_368247_vasi_prot_systems_inventory');
+			gr.get('id', record.id);
+			for(var key in gr){
+				obj[key] = gr.getDisplayValue(key);
+			}		
+			return obj;
+	}
+	
+	function newSystemReport(record) {
+		var new_section = [];
+		new_section.push('<div>')
+		new_section.push('<h3>New Record</h3>')
+		for(var key in record){
+			new_section.push("<font color=black>"  + key + "</font>" + " " + record[key] + " " + "<br>");
+		}
+		new_section.push('</div>');
+		return new_section.join('');
+	}
+	
+	function updateSystemReport(record){	
+		var existing_section = [];
+		var existing_record = glideRecordToObject(record);
+		existing_section.push('<div>')
+		existing_section.push('<h3>Existing Record</h3>');
+		var updated_fields_count = 0;
+		for(var key in record){
+			if(existing_record[key] != record[key]){
+				existing_section.push("<font color=black>"  + key + "</font>" + " " + existing_record[key] + " --> " + record[key] + "<br>");
+				updated_fields_count++;
+			}
+		}
+		existing_section.push('</div>');
+			
+		if(updated_fields_count == 0){
+			data.record_contains_updates = false;
+			return '<div><h4>All fields are the same as existing record!</h4></div>';
+		}
+		else{	
+			data.record_contains_updates = true;
+			return existing_section.join('');
+		}
+	}
+	
+	if(input && input.action == 'check_record'){
+		if(systemExists(input.record)){
+			 data.record_exists = true;
+			 data.report=updateSystemReport(input.record);
+		}
+		else{
+			 data.record_exists = false;
+			 data.report=newSystemReport(input.record);
+		}
+	}
+	
+	if (input && input.action == 'insert_record'){
+		data.record_id=newRecord(input.record);
+	}
+	
+	if (input && input.action == 'update_record'){
+		data.record_id=updateRecord(input.record);	
+	}
+	
+})();]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-07-10 15:59:38</sys_created_on>
         <sys_id>033f2df5dba23300e16bd426ca961931</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>454</sys_mod_count>
         <sys_name>Add System</sys_name>
         <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
         <sys_policy/>
         <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
         <sys_update_name>sp_widget_033f2df5dba23300e16bd426ca961931</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-07-10 16:00:34</sys_updated_on>
+        <sys_updated_by>timothy.baker</sys_updated_by>
+        <sys_updated_on>2019-07-16 13:18:53</sys_updated_on>
         <template><![CDATA[<div>
-	<head>
-    
-  </head>
   <body>
     <h1>
       Add New System
     </h1>
+    <div>
+      <label>
+        <h4>
+        	Load from JSON file
+        </h4>
+  			<input type="file" accept="application/*" onchange="readJson(event)">
+        <div id=Status></div>
+        <br>
+        <div id=Report></div>
+        <br>
+				<button ng-show="showInsert" onclick="addSystem(event)">Insert Record</button>
+        <button ng-show="showOverwrite" onclick="updateSystem(event)">Overwrite Record</button>
+			</label>
+    </div>
+    <div ng-show=false>
+      <sp-widget widget="data.addNewSystemWidget"></sp-widget>
+    </div>
   </body>
 </div>]]></template>
     </sp_widget>

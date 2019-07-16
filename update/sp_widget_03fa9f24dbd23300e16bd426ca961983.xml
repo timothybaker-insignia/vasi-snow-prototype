@@ -45,6 +45,10 @@
         <public>false</public>
         <roles/>
         <script><![CDATA[(function(){
+	
+	var adminMenuOptions = {};
+	var userMenuOptions = {};
+	
 	var tableOptions = {};
 	tableOptions.table = "x_368247_vasi_prot_systems_inventory";
 	tableOptions.fields = "id,name,system_acronym,criticality,type,sponsor_organization,status"
@@ -69,8 +73,9 @@
 		"rectangle_id": "criticalityReport",
 		"widget_parameters" : "{ \"report_id\": {\"value\": \"bce18432db423300e16bd426ca961904\",\"displayValue\": \" \"},\"show_title\": {\"value\": \"true\",\"displayValue\": \"true\"}}"
 	};
-	
-	//data.dataTableWidget = $sp.getWidget('clear_keywords_data_table', tableOptions);
+
+	data.adminMenuWidget = $sp.getWidget('admin_menu', adminMenuOptions);
+	data.userMenuWidget = $sp.getWidget('user_menu', userMenuOptions);
 	data.dataTableWidget = $sp.getWidget('vasi-clear-keywords-data-table', tableOptions);
 	data.organizationReportWidget = $sp.getWidget('report', organizationReportOptions);
 	data.criticalityReportWidget = $sp.getWidget('report', criticalityReportOptions);
@@ -80,19 +85,23 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-06-24 16:38:07</sys_created_on>
         <sys_id>03fa9f24dbd23300e16bd426ca961983</sys_id>
-        <sys_mod_count>290</sys_mod_count>
+        <sys_mod_count>319</sys_mod_count>
         <sys_name>Home</sys_name>
         <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
         <sys_policy/>
         <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
         <sys_update_name>sp_widget_03fa9f24dbd23300e16bd426ca961983</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-07-10 20:08:43</sys_updated_on>
+        <sys_updated_on>2019-07-11 14:23:44</sys_updated_on>
         <template><![CDATA[  		
 <div ng-if="showWidget">
 	<div class="panel major-container">
     <div class="panel-heading">
-      <h1>Systems Inventory</h1>
+      <h1>
+        Systems Inventory
+      </h1>
+      <sp-widget widget="data.adminMenuWidget"></sp-widget>
+      <sp-widget widget="data.userMenuWidget"></sp-widget>
     </div>
     <div class="panel-body">
       <div>        
