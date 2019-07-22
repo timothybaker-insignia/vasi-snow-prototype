@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[function($scope) {
+        <client_script><![CDATA[function($scope, $timeout) {
   /* widget controller */
   var c = this;
 	Status.innerHTML="";
 	Report.innerHTML="";
-	$scope.showInsert = false;
-	$scope.showOverwrite = false;
+	$scope.flag = {};
+	$scope.flag.showInsert = false;
+	$scope.flag.showOverwrite = false;
+	
+	window.clearDoms = function(event){
+		Status.innerHTML="";
+		Report.innerHTML="";	
+		$timeout(function(){		
+			$scope.flag.showOverwrite = false;
+			$scope.flag.showInsert = false;
+		}, 10);
+	}
 	
 	window.readJson = function(event){
 		var recordFile = event.target.files[0];
@@ -25,31 +35,41 @@
 					Report.innerHTML=response.data.report;
 				  if(response.data.record_exists){
 						if(response.data.record_contains_updates){
-							$scope.showOverwrite = true;
+							$timeout(function(){
+								$scope.flag.showOverwrite = true;
+							}, 10);
 						}
-						$scope.showInsert = false;
-						Status.innerHTML="<font color=green>Upload was successful - Record already exists.</font>";
+						Status.innerHTML="<font color=green>Upload successful - Record already exists.</font>";
+						$timeout(function(){
+							$scope.flag.showInsert = false;
+						}, 10);
 					}
 					else {
-						$scope.showInsert = true;
-						$scope.showOverwrite = false;
-						Status.innerHTML="<font color=green>Upload was successful - New record detected.</font>";
+						Status.innerHTML="<font color=green>Upload successful - New record detected.</font>";
+						$timeout(function(){		
+							$scope.flag.showOverwrite = false;
+							$scope.flag.showInsert = true;
+						}, 10);
 					}
 				});
-			};
+			}
 		}
 		else {
-			Status.innerHTML="<font color='red'>Failed to upload! Invalid file format.</font>";
 			Report.innerHTML="";
-			$scope.showInsert = false;
-			$scope.showOverwrite = false;
+			Status.innerHTML="<font color='red'>Upload Failed - Invalid file format.</font>";
+			$timeout(function(){
+				$scope.flag.showInsert = false;
+				$scope.flag.showOverwrite = false;
+			}, 10);
 		}
 	}
 	
 	window.addSystem = function(event){
 		Status.innerHTML="";
 		Report.innerHTML="";
-		$scope.showInsert = false;
+		$timeout(function(){
+			$scope.flag.showInsert = false;
+		}, 10);
 		var input = {};
 		input.record = c.new_record;
 		input.action = 'insert_record';
@@ -60,25 +80,28 @@
 			}
 			else{
 				Report.innerHTML='<font color=red>Failed to insert record!</font>'
-			}		})
+			}		
+		});
 	}
 	
 	window.updateSystem = function(event){
 		Status.innerHTML="";
 		Report.innerHTML="";
-		$scope.showOverwrite = false;
+		$timeout(function(){
+			$scope.flag.showOverwrite = false;
+		}, 10);
 		var input = {};
 		input.record = c.new_record;
 		input.action = 'update_record';
 		c.server.get(input).then(function(response){
 			var sys_id=response.data.record_id;
-			if(sys_id.length == 32){
+			if(sys_id && sys_id.length == 32){
 				Report.innerHTML='<font color=green>Record updated successfully!</font>'
 			}
 			else{
 				Report.innerHTML='<font color=red>Failed to update record!</font>'
 			}
-		})
+		});
 	}
 }]]></client_script>
         <controller_as>c</controller_as>
@@ -209,14 +232,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-07-10 15:59:38</sys_created_on>
         <sys_id>033f2df5dba23300e16bd426ca961931</sys_id>
-        <sys_mod_count>454</sys_mod_count>
+        <sys_mod_count>510</sys_mod_count>
         <sys_name>Add System</sys_name>
         <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
         <sys_policy/>
         <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
         <sys_update_name>sp_widget_033f2df5dba23300e16bd426ca961931</sys_update_name>
         <sys_updated_by>timothy.baker</sys_updated_by>
-        <sys_updated_on>2019-07-16 13:18:53</sys_updated_on>
+        <sys_updated_on>2019-07-17 18:00:37</sys_updated_on>
         <template><![CDATA[<div>
   <body>
     <h1>
@@ -227,13 +250,13 @@
         <h4>
         	Load from JSON file
         </h4>
-  			<input type="file" accept="application/*" onchange="readJson(event)">
+  			<input onclick="this.value=null; clearDoms(event);" type="file" accept="application/*" onchange="readJson(event)">
         <div id=Status></div>
         <br>
         <div id=Report></div>
         <br>
-				<button ng-show="showInsert" onclick="addSystem(event)">Insert Record</button>
-        <button ng-show="showOverwrite" onclick="updateSystem(event)">Overwrite Record</button>
+				<button ng-show="flag.showInsert" onclick="addSystem(event)">Insert Record</button>
+        <button ng-show="flag.showOverwrite" onclick="updateSystem(event)">Overwrite Record</button>
 			</label>
     </div>
     <div ng-show=false>

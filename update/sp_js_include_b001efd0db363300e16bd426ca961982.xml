@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_js_include">
+    <sp_js_include action="INSERT_OR_UPDATE">
+        <display_name>html2canvas</display_name>
+        <source>local</source>
+        <sys_class_name>sp_js_include</sys_class_name>
+        <sys_created_by>timothy.baker</sys_created_by>
+        <sys_created_on>2019-07-18 18:43:05</sys_created_on>
+        <sys_id>b001efd0db363300e16bd426ca961982</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>html2canvas</sys_name>
+        <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+        <sys_ui_script display_value="x_368247_vasi_prot.html2canvas">7a41a714db363300e16bd426ca9619ce</sys_ui_script>
+        <sys_update_name>sp_js_include_b001efd0db363300e16bd426ca961982</sys_update_name>
+        <sys_updated_by>timothy.baker</sys_updated_by>
+        <sys_updated_on>2019-07-18 18:43:05</sys_updated_on>
+        <url/>
+    </sp_js_include>
+</record_update>

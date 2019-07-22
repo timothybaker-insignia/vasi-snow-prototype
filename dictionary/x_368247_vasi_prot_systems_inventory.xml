@@ -29,7 +29,7 @@
         <element label="System Acronym" max_length="10" name="system_acronym" type="string"/>
         <element label="System Components" max_length="200" name="system_components" type="string"/>
         <element label="System Stakeholders" max_length="2000" name="system_stakeholders" type="string"/>
-        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <element default="javascript:current.getTableName();" dynamic_default_value="b5cb83a85f220100a9ad2572f2b4773c" label="Class" max_length="80" name="sys_class_name" type="sys_class_name" use_dynamic_default="true"/>
         <element label="Transformation Status" max_length="40" name="transformation_status" type="string"/>
         <element label="Type" max_length="40" name="type" type="string"/>
         <index name="index">

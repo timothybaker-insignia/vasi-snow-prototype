@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_dependency_js_include">
+    <m2m_sp_dependency_js_include action="INSERT_OR_UPDATE">
+        <order>100</order>
+        <sp_dependency display_value="jspdf">0919579cdbf23300e16bd426ca961990</sp_dependency>
+        <sp_js_include display_value="html2canvas">b001efd0db363300e16bd426ca961982</sp_js_include>
+        <sys_class_name>m2m_sp_dependency_js_include</sys_class_name>
+        <sys_created_by>timothy.baker</sys_created_by>
+        <sys_created_on>2019-07-18 18:43:05</sys_created_on>
+        <sys_id>1f51efd0db363300e16bd426ca96191b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>jspdf.html2canvas</sys_name>
+        <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+        <sys_update_name>m2m_sp_dependency_js_include_1f51efd0db363300e16bd426ca96191b</sys_update_name>
+        <sys_updated_by>timothy.baker</sys_updated_by>
+        <sys_updated_on>2019-07-18 18:43:05</sys_updated_on>
+    </m2m_sp_dependency_js_include>
+</record_update>

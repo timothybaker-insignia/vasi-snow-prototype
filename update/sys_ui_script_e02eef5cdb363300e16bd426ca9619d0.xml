@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_script">
+    <sys_ui_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description/>
+        <global>false</global>
+        <name>x_368247_vasi_prot.html2pdf</name>
+        <script><![CDATA[/**
+ * html2pdf.js v0.9.1
+ * Copyright (c) 2018 Erik Koopmans
+ * Released under the MIT License.
+ */
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('es6-promise/auto'), require('jspdf'), require('html2canvas')) :
+	typeof define === 'function' && define.amd ? define(['es6-promise/auto', 'jspdf', 'html2canvas'], factory) :
+	(global.html2pdf = factory(null,global.jsPDF,global.html2canvas));
+}(this, (function (auto,jsPDF,html2canvas) { 'use strict';
+
+jsPDF = jsPDF && jsPDF.hasOwnProperty('default') ? jsPDF['default'] : jsPDF;
+html2canvas = html2canvas && html2canvas.hasOwnProperty('default') ? html2canvas['default'] : html2canvas;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};]]></script>
+        <script_name>html2pdf</script_name>
+        <sys_class_name>sys_ui_script</sys_class_name>
+        <sys_created_by>timothy.baker</sys_created_by>
+        <sys_created_on>2019-07-18 19:39:03</sys_created_on>
+        <sys_id>e02eef5cdb363300e16bd426ca9619d0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_368247_vasi_prot.html2pdf</sys_name>
+        <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+        <sys_update_name>sys_ui_script_e02eef5cdb363300e16bd426ca9619d0</sys_update_name>
+        <sys_updated_by>timothy.baker</sys_updated_by>
+        <sys_updated_on>2019-07-18 19:39:03</sys_updated_on>
+        <ui_type>0</ui_type>
+        <use_scoped_format>false</use_scoped_format>
+    </sys_ui_script>
+</record_update>

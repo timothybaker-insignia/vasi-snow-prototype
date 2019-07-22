@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[function($scope) {
+        <client_script><![CDATA[function($scope, $timeout) {
   /* widget controller */
   var c = this;
 	
-	function print(content){
-		var options = "height=400,width=600,visible=none";
-		var print_window = window.open('', 'print', options);
+	function print(content, name){
+		var options = "";
+		var print_window = window.open("", "print window", options);
 		print_window.document.write(content);	
 		print_window.document.close();
-		print_window.resizeTo(0,0); 
-		print_window.moveTo(0,window.screen.availHeight+10);
 		print_window.focus();
 		print_window.print();
 		print_window.close();
@@ -24,6 +22,177 @@
     a.download = fileName;
     a.click();
 	}	
+	
+	function reportDate(){
+		var today = new Date();
+		var month_dict = {
+			0:"January",
+			1:"February",
+			2:"March",
+			3:"April",
+			4:"May",
+			5:"June",
+			6:"July",
+			7:"August",
+			8:"September",
+			9:"October",
+			10:"November",
+			11:"December"
+		}
+		return month_dict[today.getMonth()] + " " + today.getDate() + ", " + today.getFullYear() + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();	
+	}
+	
+		function buildReportPdfFromPage(content, reportName){	
+		var options = {};
+		options.pagesplit = true;
+		var doc = document.createElement('html');
+		doc.innerHTML = content;
+		/*
+		document.body.insertBefore(doc, document.body.firstChild);
+		var originalHead = document.head.innerHTML;
+		document.head.contentEditable = true;
+		document.head.innerHTML = doc.getElementsByTagName('HEAD')[0].innerHTML;
+		html2canvas(document.body.firstChild, {dpi: 300, scale: 1, pagesplit: true}).then(function(canvas){
+				var img = canvas.toDataURL("image/jpeg", 1);
+				var pdf = new jsPDF('p', 'pt', 'a4');
+				pdf.addImage(img, 'JPEG', 0, 0, 595, 842);
+				pdf.save(reportName);
+		});
+		document.head.innerHTML = originalHead;
+		document.head.contentEditable = false;
+		document.body.removeChild(document.body.firstChild);
+		*/
+		
+		var pdf = new jsPDF('p', 'pt', 'a4');
+		pdf.fromHTML(doc, options);
+		pdf.save(reportName);
+	}
+	
+	function buildReportPage(system){
+		var pageContents = [];
+		var report_date = reportDate();
+		
+		for(var key in system){
+			if(system[key] == ''){
+				system[key] = 'N/A';
+			}
+		}
+		
+			pageContents.push("<head>");
+			pageContents.push("	<style>");
+			pageContents.push("		.row{margin-left: auto; margin-right: auto;} ");
+			pageContents.push("		.column-3{float: left; width: 33%;} ");
+			pageContents.push("		.column-2{float: left; width: 50%;} ");
+			pageContents.push("		table{width: 100%; border: 2px solid #212121;} ");
+			pageContents.push("		th{font-size: 1em; font-weight: bolder; background-color: #808080;} ");
+			pageContents.push("		td{font-size: 1em; border: 1px solid #212121;} ");
+			pageContents.push("		.system{font-size: 2em; font-weight: bolder; padding-bottom: 1em; text-align: center;} ");
+			pageContents.push("		.section{font-size: 1.5em; font-weight: bolder; padding-bottom: 0.5em;} ");
+			pageContents.push("		.section-end{padding-bottom: 1em;}");
+			pageContents.push("		.title{padding-top: 0px; padding-bottom: 0px; font-size: 1.17em; font-weight: bolder;} ");
+			pageContents.push("		.item{padding-top: 0px; font-size: 1em; padding-bottom: 0.5em;} ");
+			pageContents.push("	</style>");
+			pageContents.push("</head>");
+			pageContents.push("<body>");
+			pageContents.push("	<div class='system'>" + system.name + " (" + system.system_acronym + ") - #" + system.id + "</div>");
+			// SYSTEM INFORMATION
+			pageContents.push("	<div class='section'>System Information</div>");
+			pageContents.push("	<div class='row'>");
+			pageContents.push("		<div class='column-3'>")
+			pageContents.push("			<div class='title'>System ID</div>");
+			pageContents.push("			<div class='item'>" + system.id + "</div>");
+			pageContents.push("		</div>")
+			pageContents.push("		<div class='column-3'>")
+			pageContents.push("			<div class='title'>System Acronym</div>");
+			pageContents.push("			<div class='item'>" + system.system_acronym + "</div>");
+			pageContents.push("		</div>")
+			pageContents.push("		<div class='column-3'>")
+			pageContents.push("			<div class='title'>System Name</div>");
+			pageContents.push("			<div class='item'>" + system.name + "</div>");
+			pageContents.push("		</div>")
+			pageContents.push("	</div>")
+			pageContents.push("	<div class='row'>");
+			pageContents.push("		<div class='column-3'>");
+			pageContents.push("			<div class='title'>Sponsor Organizational Unit</div>");
+			pageContents.push("			<div class='item'>" + system.sponsor_organization + "</div>");
+			pageContents.push("		</div>");
+			pageContents.push("		<div class='column-3'>");
+			pageContents.push("			<div class='title'>System Status</div>");
+			pageContents.push("			<div class='item'>" + system.status + "</div>");
+			pageContents.push("		</div>");
+			pageContents.push("		<div class='column-3'>");
+			pageContents.push("			<div class='title'>System Criticality</div>");
+			pageContents.push("			<div class='item'>" + system.criticality + "</div>");
+			pageContents.push("		</div>");
+			pageContents.push("	</div>");
+			pageContents.push("	<div class='row'>");
+			pageContents.push("		<div class='column-3'>");
+			pageContents.push("			<div class='title'>System Type</div>");
+			pageContents.push("			<div class='item'>" + system.type + "</div>");
+			pageContents.push("		</div>");
+			pageContents.push("		<div class='column-3'>");
+			pageContents.push("			<div class='title'>Software Type</div>");
+			pageContents.push("			<div class='item'>" + system.software_type + "</div>");
+			pageContents.push("		</div>");
+			pageContents.push("		<div class='column-3'>");
+			pageContents.push("			<div class='title'>Transformation Status</div>");
+			pageContents.push("			<div class='item'>" + system.transformation_status + "</div>");
+			pageContents.push("		</div>");
+			pageContents.push("	</div>");
+			pageContents.push("	<div class='row'>");
+			pageContents.push("		<div class='column-3'>");
+			pageContents.push("			<div class='title'>Product Line</div>");
+			pageContents.push("			<div class='item'>" + system.product_line + "</div>");
+			pageContents.push("		</div>");
+			pageContents.push("		<div class='column-3'>");
+			pageContents.push("			<div class='title'>Receiving Organization</div>");
+			pageContents.push("			<div class='item'>" + system.receiving_organization + "</div>");
+			pageContents.push("		</div>");
+			pageContents.push("		<div class='column-3'>");
+			pageContents.push("			<div class='title'>AMO/ITAM Portfolio</div>");
+			pageContents.push("			<div class='item'>" + system.amo_itam_porfolio + "</div>");
+			pageContents.push("		</div>");
+			pageContents.push("	</div>");
+			pageContents.push("	<div class='title'>System Description</div>");
+			pageContents.push("	<div class='item'>" + system.description + "</div>");
+			pageContents.push("	<div class='title'>VASI Information Owner (VASI IO)</div>");
+			pageContents.push("	<table>");
+			pageContents.push("		<tr>");
+			pageContents.push("			<th>Stakeholder Type</th>");
+			pageContents.push("			<th>Name</th>");
+			pageContents.push("			<th>Email</th>");
+			pageContents.push("			<th>Phone</th>");
+			pageContents.push("		</tr>");
+			pageContents.push("		<tr>");
+			pageContents.push("			<td>VASI Information Owner (VASI IO)</td>");
+			pageContents.push("			<td>" + system.information_owner.name + "</td>");
+			pageContents.push("			<td>" + system.information_owner.email + "</td>");
+			pageContents.push("			<td>" + system.information_owner.phone + "</td>");
+			pageContents.push("		</tr>");
+			pageContents.push("	</table>");
+			pageContents.push("	<div class='section-end'>&nbsp;</div>");
+			// BUSINESS INFORMATION
+			pageContents.push("	<div class='section'>Business Information</div>");
+			pageContents.push("	<div class='section-end'>&nbsp;</div>");
+			// TECHNICAL INFORMATION
+			pageContents.push("	<div class='section'>Technical Information</div>");
+			pageContents.push("	<div class='section-end'>&nbsp;</div>");
+			// SECURITY INFORMATION
+			pageContents.push("	<div class='section'>Security Information</div>");
+			pageContents.push("	<div class='section-end'>&nbsp;</div>");
+			// PARENT/CHILD SYSTEMS
+			pageContents.push("	<div class='section'>Parent/Child Systems</div>");
+			pageContents.push("	<div class='section-end'>&nbsp;</div>");
+			// INTERFACE INFORMATION
+			pageContents.push("	<div class='section'>Interface Information</div>");
+			pageContents.push("	<div class='section-end'>&nbsp;</div>");
+			pageContents.push("	<footer>");
+			pageContents.push("		<div style='font-style: italic;'>Report Generated on " + report_date + "</div>");
+			pageContents.push("	</footer>");
+			pageContents.push("</body>");
+		
+		return pageContents.join('\n');
+	}
 	
 	c.fetch = function(data){
 		var input = {};
@@ -41,10 +210,10 @@
 	
 	window.printReport = function(event){
 		if(c.exists){
-			var jsonData = JSON.stringify(c.system.displayValue);
+			var systemData = buildReportPage(c.system.displayValue);	
 			var reportName = c.system.value.id + '-' + c.system.value.name + '.txt';
 			reportName = reportName.replace(' ', '-').toLowerCase();
-			print(jsonData, reportName, 'text/plain');
+			print(systemData, reportName);
 		}
 		else{
 			alert("record not found");
@@ -53,10 +222,11 @@
 	
 	window.downloadReport = function(event){
 		if(c.exists){
-			var jsonData = JSON.stringify(c.system.displayValue);
-			var reportName = c.system.value.id + '-' + c.system.value.name + '.txt';
+			var systemData = buildReportPage(c.system.displayValue);
+			var reportName = c.system.value.id + '-' + c.system.value.name + '.pdf';
 			reportName = reportName.replace(' ', '-').toLowerCase();
-			download(jsonData, reportName, 'text/plain');
+			var pdf = buildReportPdfFromPage(systemData, reportName);
+			//download(pdf, reportName, 'application/pdf');
 		}
 		else{
 			alert("record not found");
@@ -84,6 +254,27 @@
 	data.system.displayValue={};
 	data.system.value={};
 	
+	function parseInformationOwner(information_owner){
+		var io_dict = {};
+		var io_list = information_owner.split(',,,,');
+		io_dict.name = io_list[0] || '';
+		io_dict.title = io_list[1] || '';
+		io_dict.organization = io_list[2] || '';
+		io_dict.phone = io_list[3] || '';
+		io_dict.email = io_list[4] || '';
+		
+		for(var key in io_dict){
+			if(io_dict[key] == ''){
+				io_dict[key] = 'N/A';
+			}
+		}
+		return io_dict;
+	}
+	
+	function parseStakeHolder(stakeholders){
+			return stakeholders;
+	}
+	
 	if(input && input.action=='generate report'){
 		var gr = new GlideRecord('x_368247_vasi_prot_systems_inventory');
 		
@@ -95,7 +286,16 @@
 		}
 		
 		for(var key in gr){
-		  data.system.displayValue[key] = gr.getDisplayValue(key);
+			
+			if(key == 'information_owner'){
+				data.system.displayValue[key] = parseInformationOwner(gr.getDisplayValue(key));
+			}
+			else if(key == 'system_stakeholder'){
+				data.system.displayValue[key] = parseStakeHolder(gr.getDisplayValue(key));
+			}
+			else{
+				data.system.displayValue[key] = gr.getDisplayValue(key);				
+			}
 			data.system.value[key] = gr.getValue(key);
 		}	
 	}
@@ -106,14 +306,14 @@
         <sys_created_by>timothy.baker</sys_created_by>
         <sys_created_on>2019-07-15 19:28:06</sys_created_on>
         <sys_id>29eec4a3db663300e16bd426ca9619f8</sys_id>
-        <sys_mod_count>134</sys_mod_count>
+        <sys_mod_count>499</sys_mod_count>
         <sys_name>Generate System Report</sys_name>
         <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
         <sys_policy/>
         <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
         <sys_update_name>sp_widget_29eec4a3db663300e16bd426ca9619f8</sys_update_name>
         <sys_updated_by>timothy.baker</sys_updated_by>
-        <sys_updated_on>2019-07-16 14:47:23</sys_updated_on>
+        <sys_updated_on>2019-07-19 16:13:35</sys_updated_on>
         <template><![CDATA[<div>
 	<button onclick="downloadReport(event)">Download Report</button>
   <button onclick="printReport(event)"> Print Report</button>
