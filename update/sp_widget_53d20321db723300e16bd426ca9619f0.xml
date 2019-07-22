@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, $timeout) {
+  /* widget controller */
+  var c = this;
+	
+	window.clearDoms = function(event){
+		Status.innerHTML="";
+		Report.innerHTML="";	
+	}
+	
+  window.parseExcel = function(oEvent) {
+		var headers = [];
+		var systems = [];
+		var oFile = oEvent.target.files[0];
+		var sFilename = oFile.name;
+		var reader = new FileReader();
+		var result = {};
+		reader.readAsArrayBuffer(oFile);
+		reader.onload = function (e) {
+			var data = e.target.result;
+			data = new Uint8Array(data);
+			var workbook = XLSX.read(data, {type: 'array'});
+			var result = {};
+			workbook.SheetNames.forEach(function (sheetName) {
+				var roa = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], {header: 1});
+				if (roa.length) result[sheetName] = roa;
+			});
+			
+			headers = result.System[0];
+			
+			for(var n=0; n<headers.length; n++){
+				headers[n] = headers[n].replace(/[^\w\s]|_/g, "").replace(/\s+/g, "_").toLowerCase();
+			}
+			
+      for(var i=1; i<result.System.length; i++){
+				if(result.System[i].length != 0)
+				{
+					systems.push(result.System[i]);
+				}
+			}	
+			
+			var entries = [];
+			
+			for(var j=0; j<systems.length; j++){
+				var entry = {};
+				for(var k=0; k<headers.length; k++){
+					entry[headers[k]] = systems[j][k];					
+				}
+				entries.push(entry);
+			}
+					
+			var input = {};
+			input.action = "update entries";
+			input.entries = entries;
+			c.server.get(input).then(function(response){
+				var number_updated = response.data.number_updated;
+				var number_new = response.data.number_new;
+				Report.innerHTML = "<div>number updated: " + number_updated + ", number new: " + number_new + "</div>";
+			});
+		};
+	};
+}
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>add_systems</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Add Systems</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {	
+	if(input && input.action == "update entries"){
+		var update_count = 0;
+		var new_count = 0;
+		var updated_sys = [];
+		var new_sys = [];
+		for (var i=0; i<input.entries.length; i++){
+			var gr = new GlideRecord('x_368247_vasi_prot_systems_inventory');
+			if(gr.get('vasi_id', input.entries[i].vasi_id)){
+				update_count++;
+				updated_sys.push(input.entries[i]);
+				for(var key in input.entries[i]){
+					gr[key] = input.entries[i][key];
+				}	
+				gr.update();
+			}
+			else{
+				gr.initialize();
+				new_count++;
+				new_sys.push(input.entries[i]);
+				for(var key in input.entries[i]){
+					gr[key] = input.entries[i][key];
+				}	
+				gr.update();
+			}
+		}
+		data.number_updated = update_count;
+		data.number_new = new_count;
+		data.updated_sys = updated_sys;
+		data.new_sys = new_sys;
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>timothy.baker</sys_created_by>
+        <sys_created_on>2019-07-22 13:42:14</sys_created_on>
+        <sys_id>53d20321db723300e16bd426ca9619f0</sys_id>
+        <sys_mod_count>153</sys_mod_count>
+        <sys_name>Add Systems</sys_name>
+        <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+        <sys_update_name>sp_widget_53d20321db723300e16bd426ca9619f0</sys_update_name>
+        <sys_updated_by>timothy.baker</sys_updated_by>
+        <sys_updated_on>2019-07-22 18:10:23</sys_updated_on>
+        <template><![CDATA[<div>
+  <body>
+    <h1>
+      Add Systems from Excel Sheet
+    </h1>
+    <div>
+      <label>
+        <h4>
+        	Load from Excel file
+        </h4>
+  			<input onclick="this.value=null; clearDoms(event);" type="file" accept=".xlsx" onchange="parseExcel(event)">
+        <div id=Status></div>
+        <br>
+        <div id=Report></div>
+        <br>
+			</label>
+    </div>
+  </body>
+</div>]]></template>
+    </sp_widget>
+</record_update>

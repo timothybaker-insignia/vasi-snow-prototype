@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="is_external_facing" label="Is External Facing" language="en" table="x_368247_vasi_prot_systems_inventory">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>is_external_facing</element>
+            <help/>
+            <hint/>
+            <label>Is External Facing</label>
+            <language>en</language>
+            <name>x_368247_vasi_prot_systems_inventory</name>
+            <plural>Is External Facings</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-22 13:16:43</sys_created_on>
+            <sys_id>d50d7aa9db323300e16bd426ca96193d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Is External Facing</sys_name>
+            <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+            <sys_update_name>sys_documentation_x_368247_vasi_prot_systems_inventory_is_external_facing_en</sys_update_name>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-22 13:16:43</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

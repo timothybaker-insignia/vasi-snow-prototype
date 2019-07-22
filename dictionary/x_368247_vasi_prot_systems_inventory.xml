@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element label="Systems Inventory" max_length="40" name="x_368247_vasi_prot_systems_inventory" text_index="true" type="collection">
+        <element label="Accreditation Boundaries" max_length="2000" name="accreditation_boundaries" type="string"/>
+        <element label="App Codes" max_length="400" name="app_codes" type="string"/>
+        <element label="BRM Business Functions" max_length="2000" name="brm_business_functions" type="string"/>
+        <element label="BRM Capabilities" max_length="2000" name="brm_capabilities" type="string"/>
+        <element label="BRM Functions" max_length="2000" name="brm_functions" type="string"/>
+        <element label="Business Sponsor" max_length="400" name="business_sponsor" type="string"/>
         <element label="Child Systems" max_length="200" name="child_systems" type="string"/>
-        <element choice="3" default="Basic" label="Criticality" max_length="40" name="criticality" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Premium" sequence="0" value="d"/>
-                <element inactive_on_update="false" label="High" sequence="1" value="c"/>
-                <element inactive_on_update="false" label="Medium" sequence="2" value="b"/>
-                <element inactive_on_update="false" label="Basic" sequence="3" value="a"/>
-            </choice>
-        </element>
-        <element label="Description" max_length="1000" name="description" type="string"/>
-        <element attributes="isOrder," display="true" label="ID" max_length="40" name="id" type="string"/>
+        <element label="Data Steward" max_length="255" name="data_steward" type="string_full_utf8"/>
+        <element label="FISMA System Owner" max_length="400" name="fisma_system_owner" type="string"/>
+        <element label="Hosting Locations" max_length="1000" name="hosting_locations" type="string"/>
         <element label="Information Owner" max_length="200" name="information_owner" type="string"/>
-        <element label="System Name" max_length="40" name="name" type="string"/>
-        <element label="Parent Systems" max_length="200" name="parent_systems" reference_qual="idSTARTSWITH^EQ" reference_qual_condition="idSTARTSWITH^EQ" type="string"/>
+        <element default="False" label="Is External Facing" max_length="40" name="is_external_facing" type="boolean"/>
+        <element label="IT Investment" max_length="1000" name="it_investment" type="string"/>
+        <element label="IT Portfolio" max_length="1000" name="it_portfolio" type="string"/>
+        <element label="MVI Compliance" max_length="1000" name="mvi_compliance" type="string"/>
+        <element label="Organization" max_length="1000" name="organization" type="string"/>
+        <element label="Parent Organization" max_length="1000" name="parent_organization" type="string"/>
+        <element label="Parent System" max_length="200" name="parent_systems" type="string"/>
         <element label="Product Line" max_length="40" name="product_line" type="string"/>
+        <element label="Projects" max_length="2000" name="projects" type="string"/>
+        <element label="Project Manager" max_length="1000" name="project_manager" type="string"/>
         <element label="Receiving Organization" max_length="40" name="receiving_organization" type="string"/>
-        <element choice="3" default="Veterans Health Administration" label="Sponsor Organization" max_length="200" name="sponsor_organization" type="choice">
+        <element label="Software Type" max_length="400" name="software_type" type="string"/>
+        <element choice="3" label="Sponsor Organization" max_length="400" name="sponsor_organization" type="string">
             <choice>
                 <element inactive_on_update="false" label="Corporate" value="e"/>
                 <element inactive_on_update="false" label="National Cemetary Administration" value="d"/>
@@ -25,13 +32,22 @@
                 <element inactive_on_update="false" label="Veterans Health Administration" value="a"/>
             </choice>
         </element>
-        <element label="Status" max_length="40" name="status" type="string"/>
+        <element label="Sustainment Manager" max_length="400" name="sustainment_manager" type="string"/>
         <element label="System Acronym" max_length="10" name="system_acronym" type="string"/>
         <element label="System Components" max_length="200" name="system_components" type="string"/>
+        <element label="System Criticality" max_length="200" name="system_criticality" type="string"/>
+        <element label="System Description" max_length="2000" name="system_description" type="string"/>
+        <element label="System Interfaces" max_length="2000" name="system_interfaces" type="string"/>
+        <element label="System Name" max_length="400" name="system_name" type="string"/>
+        <element default="False" label="System of Systems" max_length="40" name="system_of_systems" type="boolean"/>
         <element label="System Stakeholders" max_length="2000" name="system_stakeholders" type="string"/>
+        <element label="System Status" max_length="400" name="system_status" type="string"/>
+        <element label="System Type" max_length="400" name="system_type" type="string"/>
         <element default="javascript:current.getTableName();" dynamic_default_value="b5cb83a85f220100a9ad2572f2b4773c" label="Class" max_length="80" name="sys_class_name" type="sys_class_name" use_dynamic_default="true"/>
+        <element label="Technical POC" max_length="1000" name="technical_poc" type="string"/>
+        <element label="Technology Components" max_length="2000" name="technology_components" type="string"/>
         <element label="Transformation Status" max_length="40" name="transformation_status" type="string"/>
-        <element label="Type" max_length="40" name="type" type="string"/>
+        <element label="VASI ID" max_length="400" name="vasi_id" type="string"/>
         <index name="index">
             <element name="sys_class_name"/>
         </index>

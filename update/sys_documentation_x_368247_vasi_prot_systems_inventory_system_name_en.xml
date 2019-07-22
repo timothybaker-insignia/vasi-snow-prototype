@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
-    <sys_documentation element="type" label="Type" language="en" table="x_368247_vasi_prot_systems_inventory">
+    <sys_documentation element="system_name" label="System Name" language="en" table="x_368247_vasi_prot_systems_inventory">
         <sys_documentation action="INSERT_OR_UPDATE">
-            <element>type</element>
+            <element>system_name</element>
             <help/>
             <hint/>
-            <label>Type</label>
+            <label>System Name</label>
             <language>en</language>
             <name>x_368247_vasi_prot_systems_inventory</name>
-            <plural>Types</plural>
+            <plural>System Names</plural>
             <sys_class_name>sys_documentation</sys_class_name>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-06-14 19:01:52</sys_created_on>
-            <sys_id>b29f94eddbc23300e16bd426ca961989</sys_id>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-22 14:55:45</sys_created_on>
+            <sys_id>80b31b6ddb723300e16bd426ca9619ed</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_name>Type</sys_name>
+            <sys_name>System Name</sys_name>
             <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
             <sys_policy/>
             <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
-            <sys_update_name>sys_documentation_x_368247_vasi_prot_systems_inventory_type_en</sys_update_name>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-06-14 19:01:52</sys_updated_on>
+            <sys_update_name>sys_documentation_x_368247_vasi_prot_systems_inventory_system_name_en</sys_update_name>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-22 14:55:45</sys_updated_on>
             <url/>
             <url_target/>
         </sys_documentation>

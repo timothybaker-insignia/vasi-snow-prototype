@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="system_of_systems" label="System of Systems" language="en" table="x_368247_vasi_prot_systems_inventory">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>system_of_systems</element>
+            <help/>
+            <hint/>
+            <label>System of Systems</label>
+            <language>en</language>
+            <name>x_368247_vasi_prot_systems_inventory</name>
+            <plural>System of Systems</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-22 13:32:56</sys_created_on>
+            <sys_id>8bb00b6ddb323300e16bd426ca9619fa</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>System of Systems</sys_name>
+            <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+            <sys_update_name>sys_documentation_x_368247_vasi_prot_systems_inventory_system_of_systems_en</sys_update_name>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-22 13:32:56</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

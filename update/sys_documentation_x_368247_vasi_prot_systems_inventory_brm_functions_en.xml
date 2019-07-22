@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
-    <sys_documentation element="parent_systems" label="Parent System" language="en" table="x_368247_vasi_prot_systems_inventory">
+    <sys_documentation element="brm_functions" label="BRM Functions" language="en" table="x_368247_vasi_prot_systems_inventory">
         <sys_documentation action="INSERT_OR_UPDATE">
-            <element>parent_systems</element>
+            <element>brm_functions</element>
             <help/>
             <hint/>
-            <label>Parent System</label>
+            <label>BRM Functions</label>
             <language>en</language>
             <name>x_368247_vasi_prot_systems_inventory</name>
-            <plural>Parent Systems</plural>
+            <plural>BRM Functions</plural>
             <sys_class_name>sys_documentation</sys_class_name>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-06-24 15:41:22</sys_created_on>
-            <sys_id>2f9117acdb923300e16bd426ca9619f4</sys_id>
-            <sys_mod_count>1</sys_mod_count>
-            <sys_name>Parent System</sys_name>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-22 13:12:36</sys_created_on>
+            <sys_id>c51cf269db323300e16bd426ca961958</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>BRM Functions</sys_name>
             <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
             <sys_policy/>
             <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
-            <sys_update_name>sys_documentation_x_368247_vasi_prot_systems_inventory_parent_systems_en</sys_update_name>
+            <sys_update_name>sys_documentation_x_368247_vasi_prot_systems_inventory_brm_functions_en</sys_update_name>
             <sys_updated_by>timothy.baker</sys_updated_by>
-            <sys_updated_on>2019-07-22 13:39:10</sys_updated_on>
+            <sys_updated_on>2019-07-22 13:12:36</sys_updated_on>
             <url/>
             <url_target/>
         </sys_documentation>
