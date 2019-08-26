@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="sys_import_set_row" label="testsql" max_length="40" name="x_368247_vasi_prot_testsql" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Accreditation_Boundaries" label="Accreditation_Boundaries" max_length="255" name="u_accreditation_boundaries" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=App_Codes" label="App_Codes" max_length="255" name="u_app_codes" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=BRM_Business_Functions" label="BRM_Business_Functions" max_length="255" name="u_brm_business_functions" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=BRM_Capabilities" label="BRM_Capabilities" max_length="255" name="u_brm_capabilities" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=BRM_Functions" label="BRM_Functions" max_length="255" name="u_brm_functions" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Business_Sponsor" label="Business_Sponsor" max_length="255" name="u_business_sponsor" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Data_Steward" label="Data_Steward" max_length="255" name="u_data_steward" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=FISMA_System_Owner" label="FISMA_System_Owner" max_length="255" name="u_fisma_system_owner" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Hosting_Locations" label="Hosting_Locations" max_length="1073741823" name="u_hosting_locations" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Is_External_Facing_" label="Is_External_Facing_" max_length="255" name="u_is_external_facing_" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=IT_Investment" label="IT_Investment" max_length="255" name="u_it_investment" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=IT_Portfolio" label="IT_Portfolio" max_length="255" name="u_it_portfolio" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=MVI_Compliance" label="MVI_Compliance" max_length="255" name="u_mvi_compliance" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Organization" label="Organization" max_length="255" name="u_organization" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Parent_Organization" label="Parent_Organization" max_length="255" name="u_parent_organization" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Parent_System" label="Parent_System" max_length="255" name="u_parent_system" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Product_Line" label="Product_Line" max_length="255" name="u_product_line" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Projects" label="Projects" max_length="255" name="u_projects" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Project_Manager" label="Project_Manager" max_length="255" name="u_project_manager" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Receiving_Organization" label="Receiving_Organization" max_length="255" name="u_receiving_organization" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Software_Type" label="Software_Type" max_length="255" name="u_software_type" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Sustainment_Manager" label="Sustainment_Manager" max_length="255" name="u_sustainment_manager" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=System_Acronym" label="System_Acronym" max_length="255" name="u_system_acronym" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=System_Components" label="System_Components" max_length="255" name="u_system_components" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=System_Criticality" label="System_Criticality" max_length="255" name="u_system_criticality" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=System_Description" label="System_Description" max_length="1073741823" name="u_system_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=System_Interfaces" label="System_Interfaces" max_length="255" name="u_system_interfaces" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=System_Name" label="System_Name" max_length="255" name="u_system_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=System_of_Systems" label="System_of_Systems" max_length="255" name="u_system_of_systems" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=System_Status" label="System_Status" max_length="255" name="u_system_status" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=System_Type" label="System_Type" max_length="255" name="u_system_type" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Technical_POC" label="Technical_POC" max_length="255" name="u_technical_poc" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Technology_Components" label="Technology_Components" max_length="255" name="u_technology_components" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Transformation_Status" label="Transformation_Status" max_length="255" name="u_transformation_status" type="string"/>
+        <element attributes="import_attribute_name=VASI_Id" label="VASI_Id" max_length="40" name="u_vasi_id" type="UNKNOWN"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=VASI_Information_Owner" label="VASI_Information_Owner" max_length="255" name="u_vasi_information_owner" type="string"/>
+    </element>
+</database>

@@ -6,29 +6,29 @@
         <icon>30aa8b11db023300e16bd426ca9619d2</icon>
         <kb_knowledge_base/>
         <kb_knowledge_page/>
-        <login_page display_value="login">6995a144cb11120000f8d856634c9c25</login_page>
+        <login_page/>
         <logo>5057f4f6dbc23300e16bd426ca961952</logo>
-        <notfound_page display_value="404">3c2c9063cb11020000f8d856634c9c1f</notfound_page>
+        <notfound_page/>
         <quick_start_config/>
         <sc_catalog/>
         <sc_catalog_page/>
         <sc_category_page/>
         <sp_chat_queue/>
-        <sp_rectangle_menu/>
+        <sp_rectangle_menu display_value="VEAR Main Menu">810f7176db833300e16bd426ca9619ed</sp_rectangle_menu>
         <sqanda_knowledge_base/>
         <sys_class_name>sp_portal</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-06-14 12:50:48</sys_created_on>
         <sys_id>28e90fd1db023300e16bd426ca96198d</sys_id>
-        <sys_mod_count>20</sys_mod_count>
+        <sys_mod_count>23</sys_mod_count>
         <sys_name>VASI</sys_name>
         <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
         <sys_policy/>
         <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
         <sys_update_name>sp_portal_28e90fd1db023300e16bd426ca96198d</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-07-10 15:51:05</sys_updated_on>
-        <theme display_value="Stock">79315153cb33310000f8d856634c9c4b</theme>
+        <sys_updated_by>timothy.baker</sys_updated_by>
+        <sys_updated_on>2019-08-07 18:51:39</sys_updated_on>
+        <theme display_value="VEAR">2e4ef536db833300e16bd426ca9619cd</theme>
         <title>VASI</title>
         <url_suffix>vasi</url_suffix>
     </sp_portal>

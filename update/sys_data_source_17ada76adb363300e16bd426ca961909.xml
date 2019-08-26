@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_data_source">
+    <sys_data_source action="INSERT_OR_UPDATE">
+        <category/>
+        <connection_timeout>30</connection_timeout>
+        <connection_url>jdbc:sqlserver://its-testsql.database.windows.net:1433;instanceName=its-testsql.database.windows.net;selectMethod=cursor;databaseName=servicenow</connection_url>
+        <connection_url_parameters/>
+        <csv_delimiter/>
+        <database_name>servicenow</database_name>
+        <database_port>1433</database_port>
+        <discard_arrays>true</discard_arrays>
+        <expand_node_children>false</expand_node_children>
+        <file_path/>
+        <file_retrieval_method>Attachment</file_retrieval_method>
+        <format>com.microsoft.sqlserver.jdbc.SQLServerDriver</format>
+        <glide_keystore>false</glide_keystore>
+        <header_row>1</header_row>
+        <import_set_table_label>testsql</import_set_table_label>
+        <import_set_table_name>x_368247_vasi_prot_testsql</import_set_table_name>
+        <instance_name>its-testsql.database.windows.net</instance_name>
+        <jdbc_password>diCHfpn+1ih7MaSa+EyjGA==</jdbc_password>
+        <jdbc_server>its-testsql.database.windows.net</jdbc_server>
+        <jdbc_user_name>insigniaadmin</jdbc_user_name>
+        <jpath_root_node/>
+        <last_run_database_field/>
+        <last_run_datetime/>
+        <ldap_target/>
+        <maximum_rows/>
+        <mid_server/>
+        <name>testsql</name>
+        <oracle_port>1521</oracle_port>
+        <oracle_sid>orcl</oracle_sid>
+        <properties/>
+        <query>All Rows from Table</query>
+        <query_timeout>30</query_timeout>
+        <scp_authentication>Username and Password</scp_authentication>
+        <scp_password/>
+        <scp_port/>
+        <scp_server/>
+        <scp_user_name/>
+        <sheet_number>1</sheet_number>
+        <sql_statement/>
+        <ssh_keyfile_path/>
+        <sys_class_name>sys_data_source</sys_class_name>
+        <sys_created_by>timothy.baker</sys_created_by>
+        <sys_created_on>2019-07-25 19:38:41</sys_created_on>
+        <sys_id>17ada76adb363300e16bd426ca961909</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>testsql</sys_name>
+        <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+        <sys_update_name>sys_data_source_17ada76adb363300e16bd426ca961909</sys_update_name>
+        <sys_updated_by>timothy.baker</sys_updated_by>
+        <sys_updated_on>2019-08-05 20:10:52</sys_updated_on>
+        <table_name>dbo.System$</table_name>
+        <type>JDBC</type>
+        <use_integrated_authentication>false</use_integrated_authentication>
+        <use_last_run_datetime>false</use_last_run_datetime>
+        <xpath_root_node/>
+        <zipped>false</zipped>
+    </sys_data_source>
+</record_update>

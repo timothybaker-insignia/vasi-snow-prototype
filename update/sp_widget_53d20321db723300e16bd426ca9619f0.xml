@@ -5,12 +5,173 @@
   /* widget controller */
   var c = this;
 	
+	
+	
+	jsonStatus.innerHTML="";
+	jsonReport.innerHTML="";
+	$scope.flag = {};
+	$scope.flag.showInsert = false;
+	$scope.flag.showOverwrite = false;
+	
 	window.clearDoms = function(event){
-		Status.innerHTML="";
-		Report.innerHTML="";	
+		jsonStatus.innerHTML="";
+		jsonReport.innerHTML="";	
+		$timeout(function(){		
+			$scope.flag.showOverwrite = false;
+			$scope.flag.showInsert = false;
+		}, 10);
 	}
 	
-  window.parseExcel = function(oEvent) {
+	window.jsonTemplate = function(event){
+		var input = {};
+		input.action = 'json template';
+		c.server.get(input).then(function(response){
+			var jsonTemplate = response.data.jsonTemplate;
+			var contentType = "application/json";
+			var fileName = "vasi-json-template";
+			var a = document.createElement("a");
+			var file = new Blob([jsonTemplate], {type: contentType});
+			a.href = URL.createObjectURL(file);
+			a.download = fileName;
+			a.click();		
+		});
+	}
+	
+	window.xlsxTemplate = function(event){
+		var input = {};
+		input.action = "xlsx template";
+		c.server.get(input).then(function(response){
+			var xlsxData = response.data.xlsxData;
+			var s2abs = function(s) { 
+				var buf = new ArrayBuffer(s.length); //convert s to arrayBuffer	
+				var view = new Uint8Array(buf);  //create uint8array as viewer
+				for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF; //convert to octet
+				return buf;    
+			}
+			var worksheet = XLSX.utils.aoa_to_sheet(xlsxData);
+			var xlsxTemplate = XLSX.utils.book_new();
+			xlsxTemplate.Props = {
+				Title: "vasi-xlsx-template"
+			};
+			xlsxTemplate.SheetNames.push("Systems");
+			xlsxTemplate.Sheets["Systems"] = worksheet;
+			var wbout = XLSX.write(xlsxTemplate, {bookType:'xlsx', type: 'binary'});
+			var octet_stream = s2abs(wbout);
+			var xlsxTemplate = XLSX.utils.book_new();
+			var contentType = "application/octet-stream";
+			var fileName = "vasi-json-template";
+			var a = document.createElement("a");
+			var file = new Blob([octet_stream], {type: contentType});
+			a.href = URL.createObjectURL(file);
+			a.download = fileName;
+			a.click();	
+		});
+		
+	}
+	
+	window.csvTemplate = function(event){
+		
+	}
+	
+	window.readJson = function(event){
+		var recordFile = event.target.files[0];
+		var fileExt = recordFile.name.split('.').pop();
+		if(fileExt == 'json'){
+			var reader = new FileReader();
+			reader.readAsText(recordFile);
+			reader.onload = function(e) {
+				var jsonText = reader.result;
+				c.new_record=JSON.parse(jsonText);
+				var input = {};
+				input.record = c.new_record;
+				input.action = 'check_record';
+				c.server.get(input).then(function(response){
+					jsonReport.innerHTML=response.data.report;
+				  if(response.data.record_exists){
+						if(response.data.record_contains_updates){
+							$timeout(function(){
+								$scope.flag.showOverwrite = true;
+							}, 10);
+						}
+						jsonStatus.innerHTML="<font color=green>Upload successful - Record already exists.</font>";
+						$timeout(function(){
+							$scope.flag.showInsert = false;
+						}, 10);
+					}
+					else {
+						jsonStatus.innerHTML="<font color=green>Upload successful - New record detected.</font>";
+						$timeout(function(){		
+							$scope.flag.showOverwrite = false;
+							$scope.flag.showInsert = true;
+						}, 10);
+					}
+				});
+			}
+		}
+		else {
+			jsonReport.innerHTML="";
+			jsonStatus.innerHTML="<font color='red'>Upload Failed - Invalid file format.</font>";
+			$timeout(function(){
+				$scope.flag.showInsert = false;
+				$scope.flag.showOverwrite = false;
+			}, 10);
+		}
+	}
+	
+	window.addSystem = function(event){
+		jsonStatus.innerHTML="";
+		jsonReport.innerHTML="";
+		$timeout(function(){
+			$scope.flag.showInsert = false;
+		}, 10);
+		var input = {};
+		input.record = c.new_record;
+		input.action = 'insert_record';
+		c.server.get(input).then(function(response){
+			var sys_id=response.data.record_id;
+			if(sys_id.length == 32){
+				jsonReport.innerHTML='<font color=green>Record inserted successfully!</font>'
+			}
+			else{
+				jsonReport.innerHTML='<font color=red>Failed to insert record!</font>'
+			}		
+		});
+	}
+	
+	window.updateSystem = function(event){
+		jsonStatus.innerHTML="";
+		jsonReport.innerHTML="";
+		$timeout(function(){
+			$scope.flag.showOverwrite = false;
+		}, 10);
+		var input = {};
+		input.record = c.new_record;
+		input.action = 'update_record';
+		c.server.get(input).then(function(response){
+			var sys_id=response.data.record_id;
+			if(sys_id && sys_id.length == 32){
+				jsonReport.innerHTML='<font color=green>Record updated successfully!</font>'
+			}
+			else{
+				Report.innerHTML='<font color=red>Failed to update record!</font>'
+			}
+		});
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	window.clearDoms = function(event){
+		jsonStatus.innerHTML="";
+		jsonReport.innerHTML="";	
+	}
+		
+  window.readXlsx = function(oEvent) {
 		var headers = [];
 		var systems = [];
 		var oFile = oEvent.target.files[0];
@@ -57,14 +218,36 @@
 			c.server.get(input).then(function(response){
 				var number_updated = response.data.number_updated;
 				var number_new = response.data.number_new;
-				Report.innerHTML = "<div>number updated: " + number_updated + ", number new: " + number_new + "</div>";
+				jsonReport.innerHTML = "<div>number updated: " + number_updated + ", number new: " + number_new + "</div>";
 			});
 		};
 	};
 }
 ]]></client_script>
         <controller_as>c</controller_as>
-        <css/>
+        <css>.row{
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.left-column{
+  float: left;
+  width: 50%;
+}
+
+.right-column{
+  float: right;
+  padding-left: 60px;
+  width: 50%;
+}
+</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -115,30 +298,87 @@
         <sys_created_by>timothy.baker</sys_created_by>
         <sys_created_on>2019-07-22 13:42:14</sys_created_on>
         <sys_id>53d20321db723300e16bd426ca9619f0</sys_id>
-        <sys_mod_count>153</sys_mod_count>
+        <sys_mod_count>161</sys_mod_count>
         <sys_name>Add Systems</sys_name>
         <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
         <sys_policy/>
         <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
         <sys_update_name>sp_widget_53d20321db723300e16bd426ca9619f0</sys_update_name>
         <sys_updated_by>timothy.baker</sys_updated_by>
-        <sys_updated_on>2019-07-22 18:10:23</sys_updated_on>
+        <sys_updated_on>2019-07-25 12:26:24</sys_updated_on>
         <template><![CDATA[<div>
   <body>
     <h1>
-      Add Systems from Excel Sheet
+      Add or Update System(s)
     </h1>
     <div>
       <label>
         <h4>
-        	Load from Excel file
+        	Load from JSON file
         </h4>
-  			<input onclick="this.value=null; clearDoms(event);" type="file" accept=".xlsx" onchange="parseExcel(event)">
-        <div id=Status></div>
+        <div class="row">
+          <div class="left-column">
+          	<input onclick="this.value=null; clearDoms(event);" type="file" accept=".json,.JSON" onchange="readJson(event)">
+          </div>
+          <div class="right-column">
+     				<button onclick="jsonTemplate(event)">JSON Template</button>
+          </div>
+        </div>
+        <div id=jsonStatus></div>
         <br>
-        <div id=Report></div>
+        <div id=jsonReport></div>
         <br>
+				<button ng-show="flag.showInsert" onclick="addSystem(event)">Insert Record</button>
+        <button ng-show="flag.showOverwrite" onclick="updateSystem(event)">Overwrite Record</button>
 			</label>
+    </div>
+    
+    <div>
+      <label>
+      	<h4>
+          Load from XLSX file
+        </h4>
+        <div class="row">
+          <div class="left-column">
+          	<input onclick="this.value=null; clearDoms(event);" type="file" accept=".xlsx,.XLSX" onchange="readXlsx(event)">
+          </div>
+          <div class="right-column">
+     				<button onclick="xlsxTemplate(event)">XLSX Template</button>
+          </div>
+        </div>
+        <div id=jsonStatus></div>
+        <br>
+        <div id=jsonReport></div>
+        <br>
+				<button ng-show="flag.showInsert" onclick="addSystem(event)">Insert Record</button>
+        <button ng-show="flag.showOverwrite" onclick="updateSystem(event)">Overwrite Record</button>
+      </label>
+    </div>
+    
+    <div>
+      <label>
+      	<h4>
+          Load from CSV File &nbsp;
+        </h4>
+        <div class="row">
+          <div class="left-column">
+          	<input onclick="this.value=null; clearDoms(event);" type="file" accept=".csv,.CSV" onchange="readCsv(event)">
+          </div>
+          <div class="right-column">
+     				<button onclick="csvTemplate(event)">CSV Template</button>
+          </div>
+        </div>
+        <div id=jsonStatus></div>
+        <br>
+        <div id=jsonReport></div>
+        <br>
+				<button ng-show="flag.showInsert" onclick="addSystem(event)">Insert Record</button>
+        <button ng-show="flag.showOverwrite" onclick="updateSystem(event)">Overwrite Record</button>
+      </label>
+    </div>
+    
+    <div ng-show=false>
+      <sp-widget widget="data.addNewSystemWidget"></sp-widget>
     </div>
   </body>
 </div>]]></template>

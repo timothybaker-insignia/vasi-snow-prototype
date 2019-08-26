@@ -39,10 +39,31 @@
 			10:"November",
 			11:"December"
 		}
-		return month_dict[today.getMonth()] + " " + today.getDate() + ", " + today.getFullYear() + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();	
+		
+		var month = month_dict[today.getMonth()];
+		var date = today.getDate();
+		var year = today.getFullYear();
+		var hour = today.getHours();
+		var minutes = today.getMinutes();
+		var seconds = today.getSeconds();
+		
+		if(date < 10){
+			date = '0' + date;
+		}
+		if(hour < 10){
+			hour = '0' + hour;	
+		}
+		if(minutes < 10){
+			minutes = '0' + minutes;
+		}
+		if(seconds < 10){
+			seconds = '0' + seconds;
+		}
+		
+		return month + " " + date + ", " + year + " " + hour + ":" + minutes + ":" + seconds;	
 	}
 	
-		function buildReportPdfFromPage(content, reportName){	
+	function buildReportPdfFromPage(content, reportName){	
 		var options = {};
 		options.pagesplit = true;
 		var doc = document.createElement('html');
@@ -94,13 +115,13 @@
 			pageContents.push("	</style>");
 			pageContents.push("</head>");
 			pageContents.push("<body>");
-			pageContents.push("	<div class='system'>" + system.name + " (" + system.system_acronym + ") - #" + system.id + "</div>");
+			pageContents.push("	<div class='system'>" + system.system_name + " (" + system.system_acronym + ") - #" + system.vasi_id + "</div>");
 			// SYSTEM INFORMATION
 			pageContents.push("	<div class='section'>System Information</div>");
 			pageContents.push("	<div class='row'>");
 			pageContents.push("		<div class='column-3'>")
 			pageContents.push("			<div class='title'>System ID</div>");
-			pageContents.push("			<div class='item'>" + system.id + "</div>");
+			pageContents.push("			<div class='item'>" + system.vasi_id + "</div>");
 			pageContents.push("		</div>")
 			pageContents.push("		<div class='column-3'>")
 			pageContents.push("			<div class='title'>System Acronym</div>");
@@ -108,7 +129,7 @@
 			pageContents.push("		</div>")
 			pageContents.push("		<div class='column-3'>")
 			pageContents.push("			<div class='title'>System Name</div>");
-			pageContents.push("			<div class='item'>" + system.name + "</div>");
+			pageContents.push("			<div class='item'>" + system.system_name + "</div>");
 			pageContents.push("		</div>")
 			pageContents.push("	</div>")
 			pageContents.push("	<div class='row'>");
@@ -197,7 +218,7 @@
 	c.fetch = function(data){
 		var input = {};
 		input.action = "generate report";
-		input.id = data.id;
+		input.vasi_id = data.vasi_id;
 		c.server.get(input).then(function(response){
 			c.system = response.data.system;	
 			c.exists = response.data.exists;
@@ -211,7 +232,7 @@
 	window.printReport = function(event){
 		if(c.exists){
 			var systemData = buildReportPage(c.system.displayValue);	
-			var reportName = c.system.value.id + '-' + c.system.value.name + '.txt';
+			var reportName = c.system.value.vasi_id + '-' + c.system.value.system_name + '.txt';
 			reportName = reportName.replace(' ', '-').toLowerCase();
 			print(systemData, reportName);
 		}
@@ -223,7 +244,7 @@
 	window.downloadReport = function(event){
 		if(c.exists){
 			var systemData = buildReportPage(c.system.displayValue);
-			var reportName = c.system.value.id + '-' + c.system.value.name + '.pdf';
+			var reportName = c.system.value.vasi_id + '-' + c.system.value.system_name + '.pdf';
 			reportName = reportName.replace(' ', '-').toLowerCase();
 			var pdf = buildReportPdfFromPage(systemData, reportName);
 			//download(pdf, reportName, 'application/pdf');
@@ -278,7 +299,7 @@
 	if(input && input.action=='generate report'){
 		var gr = new GlideRecord('x_368247_vasi_prot_systems_inventory');
 		
-		if(gr.get('id', input.id)){
+		if(gr.get('vasi_id', input.vasi_id)){
 			data.exists = true;
 		}
 		else{
@@ -306,14 +327,14 @@
         <sys_created_by>timothy.baker</sys_created_by>
         <sys_created_on>2019-07-15 19:28:06</sys_created_on>
         <sys_id>29eec4a3db663300e16bd426ca9619f8</sys_id>
-        <sys_mod_count>499</sys_mod_count>
+        <sys_mod_count>522</sys_mod_count>
         <sys_name>Generate System Report</sys_name>
         <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
         <sys_policy/>
         <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
         <sys_update_name>sp_widget_29eec4a3db663300e16bd426ca9619f8</sys_update_name>
         <sys_updated_by>timothy.baker</sys_updated_by>
-        <sys_updated_on>2019-07-19 16:13:35</sys_updated_on>
+        <sys_updated_on>2019-07-30 14:13:01</sys_updated_on>
         <template><![CDATA[<div>
 	<button onclick="downloadReport(event)">Download Report</button>
   <button onclick="printReport(event)"> Print Report</button>

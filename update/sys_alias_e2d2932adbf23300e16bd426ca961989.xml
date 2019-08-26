@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_alias">
+    <sys_alias action="INSERT_OR_UPDATE">
+        <connection_type>jdbc_connection</connection_type>
+        <id>x_368247_vasi_prot.jdbc_vasi_sql</id>
+        <multiple_connections>false</multiple_connections>
+        <name>jdbc_vasi_sql</name>
+        <sys_class_name>sys_alias</sys_class_name>
+        <sys_created_by>timothy.baker</sys_created_by>
+        <sys_created_on>2019-07-25 17:26:37</sys_created_on>
+        <sys_id>e2d2932adbf23300e16bd426ca961989</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_368247_vasi_prot.jdbc_vasi_sql</sys_name>
+        <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+        <sys_update_name>sys_alias_e2d2932adbf23300e16bd426ca961989</sys_update_name>
+        <sys_updated_by>timothy.baker</sys_updated_by>
+        <sys_updated_on>2019-07-25 17:26:37</sys_updated_on>
+        <type>connection</type>
+    </sys_alias>
+</record_update>

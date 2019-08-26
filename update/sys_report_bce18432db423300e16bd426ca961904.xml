@@ -42,9 +42,9 @@
         <donut_width_percent>50</donut_width_percent>
         <end_time/>
         <exp_report_attrs>true</exp_report_attrs>
-        <field>criticality</field>
+        <field>system_criticality</field>
         <field_list>number,opened_at,short_description,caller_id,priority,state,category,assignment_group,assigned_to,sys_updated_on,sys_updated_by</field_list>
-        <filter table="x_368247_vasi_prot_systems_inventory">^ORDERBYcriticality<item endquery="false" field="" goto="false" newquery="false" operator="ORDERBY" or="false" value="criticality"/>
+        <filter table="x_368247_vasi_prot_systems_inventory">^ORDERBYsystem_criticality<item endquery="false" field="" goto="false" newquery="false" operator="ORDERBY" or="false" value="system_criticality"/>
         </filter>
         <from/>
         <funnel_neck_percent>30</funnel_neck_percent>
@@ -103,14 +103,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-06-18 14:04:25</sys_created_on>
         <sys_id>bce18432db423300e16bd426ca961904</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>8</sys_mod_count>
         <sys_name>System by Criticality</sys_name>
         <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
         <sys_policy/>
         <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
         <sys_update_name>sys_report_bce18432db423300e16bd426ca961904</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-06-25 17:32:33</sys_updated_on>
+        <sys_updated_by>timothy.baker</sys_updated_by>
+        <sys_updated_on>2019-07-22 19:13:02</sys_updated_on>
         <table>x_368247_vasi_prot_systems_inventory</table>
         <title>System by Criticality</title>
         <title_horizontal_alignment>center</title_horizontal_alignment>

@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="c42c8884db073300e16bd426ca96199b" sys_domain="global" table="x_368247_vasi_prot_testsql" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_system_of_systems</element>
+            <position>0</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>842c8884db073300e16bd426ca9619a1</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_app_codes</element>
+            <position>1</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>0c2c8884db073300e16bd426ca9619a1</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_transformation_status</element>
+            <position>2</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>8c2c8884db073300e16bd426ca9619a1</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_data_steward</element>
+            <position>3</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>002c8884db073300e16bd426ca9619a2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_it_portfolio</element>
+            <position>4</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>802c8884db073300e16bd426ca9619a2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_product_line</element>
+            <position>5</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>042c8884db073300e16bd426ca9619a2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_sustainment_manager</element>
+            <position>6</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>842c8884db073300e16bd426ca9619a2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_system_interfaces</element>
+            <position>7</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>082c8884db073300e16bd426ca9619a2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_technical_poc</element>
+            <position>8</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>882c8884db073300e16bd426ca9619a2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_brm_functions</element>
+            <position>9</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>0c2c8884db073300e16bd426ca9619a2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_is_external_facing_</element>
+            <position>10</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>8c2c8884db073300e16bd426ca9619a2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_parent_organization</element>
+            <position>11</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>002c8884db073300e16bd426ca9619a3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_receiving_organization</element>
+            <position>12</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>802c8884db073300e16bd426ca9619a3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_system_criticality</element>
+            <position>13</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>042c8884db073300e16bd426ca9619a3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_system_status</element>
+            <position>14</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>842c8884db073300e16bd426ca9619a3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_brm_business_functions</element>
+            <position>15</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>082c8884db073300e16bd426ca9619a3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_vasi_id</element>
+            <position>16</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>882c8884db073300e16bd426ca9619a3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_fisma_system_owner</element>
+            <position>17</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>0c2c8884db073300e16bd426ca9619a3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_mvi_compliance</element>
+            <position>18</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>8c2c8884db073300e16bd426ca9619a3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_projects</element>
+            <position>19</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>002c8884db073300e16bd426ca9619a4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_system_acronym</element>
+            <position>20</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>802c8884db073300e16bd426ca9619a4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_system_name</element>
+            <position>21</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>042c8884db073300e16bd426ca9619a4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_accreditation_boundaries</element>
+            <position>22</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>842c8884db073300e16bd426ca9619a4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_technology_components</element>
+            <position>23</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>082c8884db073300e16bd426ca9619a4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_business_sponsor</element>
+            <position>24</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>882c8884db073300e16bd426ca9619a4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_it_investment</element>
+            <position>25</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>0c2c8884db073300e16bd426ca9619a4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_parent_system</element>
+            <position>26</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>8c2c8884db073300e16bd426ca9619a4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_software_type</element>
+            <position>27</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>002c8884db073300e16bd426ca9619a5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_system_description</element>
+            <position>28</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>802c8884db073300e16bd426ca9619a5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_system_type</element>
+            <position>29</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>042c8884db073300e16bd426ca9619a5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_brm_capabilities</element>
+            <position>30</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>842c8884db073300e16bd426ca9619a5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_vasi_information_owner</element>
+            <position>31</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>002c0c84db073300e16bd426ca961997</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_hosting_locations</element>
+            <position>32</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>802c0c84db073300e16bd426ca961997</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_organization</element>
+            <position>33</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>042c0c84db073300e16bd426ca961997</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_project_manager</element>
+            <position>34</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>842c0c84db073300e16bd426ca961997</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_system_components</element>
+            <position>35</position>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:39</sys_created_on>
+            <sys_id>082c0c84db073300e16bd426ca961997</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_368247_vasi_prot_testsql" sys_domain="global" view="Default view">c42c8884db073300e16bd426ca96199b</sys_ui_section>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_368247_vasi_prot_testsql</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>timothy.baker</sys_created_by>
+            <sys_created_on>2019-07-29 18:48:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c42c8884db073300e16bd426ca96199b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_368247_vasi_prot_testsql</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+            <sys_update_name>sys_ui_section_c42c8884db073300e16bd426ca96199b</sys_update_name>
+            <sys_updated_by>timothy.baker</sys_updated_by>
+            <sys_updated_on>2019-07-29 18:48:38</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

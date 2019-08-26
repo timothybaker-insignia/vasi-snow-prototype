@@ -53,15 +53,15 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-06-19 02:25:45</sys_created_on>
         <sys_id>889bae36db0a3300e16bd426ca96190f</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>API View</sys_name>
         <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
         <sys_policy/>
         <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
         <sys_update_name>sp_widget_889bae36db0a3300e16bd426ca96190f</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-06-28 14:06:58</sys_updated_on>
-        <template><![CDATA[<div>
+        <sys_updated_by>timothy.baker</sys_updated_by>
+        <sys_updated_on>2019-08-14 18:37:42</sys_updated_on>
+        <template><![CDATA[<div class="main">
 	<div ng-if="showWidget == true">
 		<div class="panel major-container">
       <div class="panel-heading">

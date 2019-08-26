@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="ecc_agent_jar">
+    <ecc_agent_jar action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description>Generate PDF from HTML</description>
+        <directory>false</directory>
+        <name>html2pdf</name>
+        <parent/>
+        <source>custom</source>
+        <sys_class_name>ecc_agent_jar</sys_class_name>
+        <sys_created_by>timothy.baker</sys_created_by>
+        <sys_created_on>2019-07-30 15:19:10</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>9eb5ec50db437300e16bd426ca961956</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>html2pdf</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+        <sys_update_name>ecc_agent_jar_9eb5ec50db437300e16bd426ca961956</sys_update_name>
+        <sys_updated_by>timothy.baker</sys_updated_by>
+        <sys_updated_on>2019-07-30 16:14:46</sys_updated_on>
+        <version>1.0</version>
+    </ecc_agent_jar>
+    <sys_attachment action="INSERT_OR_UPDATE">
+        <average_image_color/>
+        <chunk_size_bytes>734003</chunk_size_bytes>
+        <compressed>true</compressed>
+        <content_type>application/java-archive</content_type>
+        <file_name>test.jar</file_name>
+        <image_height/>
+        <image_width/>
+        <size_bytes>985</size_bytes>
+        <size_compressed>735</size_compressed>
+        <state>available</state>
+        <sys_created_by>timothy.baker</sys_created_by>
+        <sys_created_on>2019-07-30 15:19:47</sys_created_on>
+        <sys_id>2ee56c90db437300e16bd426ca96193e</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2019-07-30 15:19:57</sys_updated_on>
+        <table_name>ecc_agent_jar</table_name>
+        <table_sys_id>9eb5ec50db437300e16bd426ca961956</table_sys_id>
+    </sys_attachment>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAAAA==</data>
+        <length>16</length>
+        <position>0</position>
+        <sys_attachment display_value="test.jar" sys_id="2ee56c90db437300e16bd426ca96193e">2ee56c90db437300e16bd426ca96193e</sys_attachment>
+        <sys_created_by>timothy.baker</sys_created_by>
+        <sys_created_on>2019-07-30 15:19:47</sys_created_on>
+        <sys_id>6ee56c90db437300e16bd426ca96193e</sys_id>
+    </sys_attachment_doc>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>C/BmZhFh4ODgYCiL/OfHgAREGFgYfF1DHHU9/dz0fR39PN1cg0P0fN3+nWJg+Ox75rSPt67eRV5vXa1zZ85vDjK4Yvzg6SffM2cul57z1NHbFnRC4+RZQy0Pz8vMnJ+KGl1LmYW8jdaIfKnYWbGTIcCbnePWhIOi9kBrnIE4AO4I7zBURwgCcW5+SmlOqm5mXlq+XnJOYnGx9df863ZsbGzcbHplbGpubO/u/JlyaU7I3TN7ttS4sa178OfSoich28/MCXFjY1TR3LvmyCYXNzaz+A0TDJitlZnd3Tzz+gIdvWYZMKsrM6t7NMYFJRVmMTMzKzPzGBgaNHuKsYUp6B47wCbGmpWX4MAAdu3SFvmZ+UC3TIa6louBgYMBw7WcQJxRkptjVJCSpo/wVDJayAojK/NNzMyDeCvX/6DfIQeBWufoLG2OpkXh+ss8koT5j7E8PnpE+BXj4aOXmbbqaOpqdt9fqi7MX9cgnzond/aKG75l996c2VOZb7//nj1DzIMLbq0B81e6lmybY/dzu9MxMx+nYr15rfKdFl/eH/+csIjjqrekd6mrwZ53HQlx6pcPtDIuZ+MOdUpWePwgb68E+8tmCXfGhaYeakpSnSGvygNNrvqs+/JF/qLdQc9rWSuCJNtbkvM/JCvof9v93/tN6tIg3ZBLRuJ7pl/4KOdd9pK/wyRF+e0ks4Oyaq9LhO545N68yOf/VaTvwKwLxx/0/D978dn08x49105Kb4uzXHngacTZLrZtltc+MR6zUk5k722qORdxcc6902yXT82YuyfaoPTaEb3vslsu6JV92TS3xvzo3fhHLbZv0m+cXMa3jxEUJVW8e8K1GYGBzgSKEkYmEQZEOkZOXKB0jApwpWpkU0BRixzpgigmtGJLliDtXAy4UwYCGDOipBOEraCUguwvYRRtUYxY002ANysbSJoFCP8C6WNMIB4AyYfL9tkDAAA=</data>
+        <length>968</length>
+        <position>1</position>
+        <sys_attachment display_value="test.jar" sys_id="2ee56c90db437300e16bd426ca96193e">2ee56c90db437300e16bd426ca96193e</sys_attachment>
+        <sys_created_by>timothy.baker</sys_created_by>
+        <sys_created_on>2019-07-30 15:19:47</sys_created_on>
+        <sys_id>eee56c90db437300e16bd426ca96193e</sys_id>
+    </sys_attachment_doc>
+</record_update>

@@ -15,7 +15,7 @@
         <element label="IT Investment" max_length="1000" name="it_investment" type="string"/>
         <element label="IT Portfolio" max_length="1000" name="it_portfolio" type="string"/>
         <element label="MVI Compliance" max_length="1000" name="mvi_compliance" type="string"/>
-        <element label="Organization" max_length="1000" name="organization" type="string"/>
+        <element label="Organization" max_length="255" name="organization" type="string"/>
         <element label="Parent Organization" max_length="1000" name="parent_organization" type="string"/>
         <element label="Parent System" max_length="200" name="parent_systems" type="string"/>
         <element label="Product Line" max_length="40" name="product_line" type="string"/>
@@ -23,20 +23,11 @@
         <element label="Project Manager" max_length="1000" name="project_manager" type="string"/>
         <element label="Receiving Organization" max_length="40" name="receiving_organization" type="string"/>
         <element label="Software Type" max_length="400" name="software_type" type="string"/>
-        <element choice="3" label="Sponsor Organization" max_length="400" name="sponsor_organization" type="string">
-            <choice>
-                <element inactive_on_update="false" label="Corporate" value="e"/>
-                <element inactive_on_update="false" label="National Cemetary Administration" value="d"/>
-                <element inactive_on_update="false" label="Office of Information and Technology" value="c"/>
-                <element inactive_on_update="false" label="Veterans Benefits Administration" value="b"/>
-                <element inactive_on_update="false" label="Veterans Health Administration" value="a"/>
-            </choice>
-        </element>
         <element label="Sustainment Manager" max_length="400" name="sustainment_manager" type="string"/>
         <element label="System Acronym" max_length="10" name="system_acronym" type="string"/>
         <element label="System Components" max_length="200" name="system_components" type="string"/>
         <element label="System Criticality" max_length="200" name="system_criticality" type="string"/>
-        <element label="System Description" max_length="2000" name="system_description" type="string"/>
+        <element label="System Description" max_length="4000" name="system_description" type="string"/>
         <element label="System Interfaces" max_length="2000" name="system_interfaces" type="string"/>
         <element label="System Name" max_length="400" name="system_name" type="string"/>
         <element default="False" label="System of Systems" max_length="40" name="system_of_systems" type="boolean"/>

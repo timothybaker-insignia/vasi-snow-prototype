@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, $rootScope) {
+  /* widget controller */
+  var c = this;
+	
+	c.lists = {};
+	c.lists.va_systems = [];
+	c.lists.system_of_systems = [];
+	c.lists.systems_by_alphabet = [];
+	c.lists.systems_by_criticality = [];
+	c.lists.systems_by_organization = [];
+	c.lists.development_systems = [];
+	c.lists.all_systems_and_non_systems = [];
+	c.lists.inactive_systems = [];
+	c.lists.invalid_systems = [];
+	
+	$scope.isNavOpen = true;
+	
+	window.toggleListsContent = function(event, listscontent) {	
+		var i, tabcontent, tablinks;
+						
+		if(event.currentTarget.className.includes(" active")){
+			event.currentTarget.className = event.currentTarget.className.replace(" active", "");
+			document.getElementById(listscontent).style.display = "none";
+			return;
+		}
+		
+		tabcontent = document.getElementsByClassName("listscontent");
+		for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+		}
+		
+		tablinks = document.getElementsByClassName("listslinks");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className.replace(" active", "");
+		}
+		
+		document.getElementById(listscontent).style.display = "block";
+		event.currentTarget.className += " active";
+	}
+	
+	window.toggleListsOrSearch = function(event, listsOrSearch) {	
+		var i, tabcontent, tablinks;
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+		}
+
+		tablinks = document.getElementsByClassName("tablinks");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className.replace(" active", "");
+		}
+
+		document.getElementById(listsOrSearch).style.display = "block";
+		event.currentTarget.className += " active";
+	}
+		
+	window.openNav = function() {
+		document.getElementById("vasi_side_nav").style.width = 'var(--sidenav-width-max)';
+		var x = document.getElementsByClassName("main");
+		for(var i=0; i<x.length; i++){
+			x[i].style.marginLeft = 'var(--sidenav-width-max)';
+		}
+		$scope.isNavOpen = !$scope.isNavOpen;
+	}
+
+	window.closeNav = function() {
+		document.getElementById("vasi_side_nav").style.width = 'var(--sidenav-width-min)';
+		var x = document.getElementsByClassName("main");
+		for(var i=0; i<x.length; i++){
+			x[i].style.marginLeft = 'var(--sidenav-width-min)';
+		}
+		$scope.isNavOpen = !$scope.isNavOpen;
+	}
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.sidenav {
+  --nav-background-color: #505050;
+  --nav-title-background-color: maroon;
+  --sidenav-width-max: $sp-sidenav-width-max;
+  --sidenav-width-min: $sp-sidenav-width-min;
+  margin-top: $sp-header-height;
+  margin-bottom: $sp-footer-height;
+  height: 100%; 
+  width: var(--sidenav-width-max); 
+  position: fixed; 
+  z-index: 1; 
+  top: 0; 
+  left: 0;
+  background-color: var(--nav-background-color);
+  overflow-x: hidden; 
+  padding-bottom: $sp-footer-height;
+  transition: 0.5s; 
+}
+
+.sidenav .title {
+  padding: 10px;
+  font-size: 1.1em;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  margin: auto;
+  background-color: var(--nav-title-background-color);
+  width: 100%;
+  height: 40px;
+	display: inline-block;
+	white-space: nowrap;
+  transition: 0.0s;
+}
+
+.sidenav .body {
+  display: inline-block;
+	white-space: normal;
+  transition: 0.0s; 
+}
+
+.sidenav .body .section { 
+	background-color: Grey; 
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.sidenav .body .section a {
+  padding: 6px 12px;
+  text-decoration: none;
+  font-size: 1.0em;
+  color: white;
+  display: block;
+  left: 0;
+}
+
+.sidenav .body .section a:hover {
+  color: maroon;
+  background-color: white;
+}
+
+.sidenav .btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.sidenav .btn button{
+  background-color: transparent;
+  width: var(--sidenav-width-min);
+  height: var(--sidenav-width-min);
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2.0em;
+  font-weight: bolder;
+  color: white;
+  border: none;
+}
+
+.sidenav .body .section .tab {
+  overflow: hidden;
+  //background-color: #f1f1f1;
+}
+
+.sidenav .body .section .tab button {
+  background-color: inherit;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 6px 8px;
+  transition: 0.3s;
+  width: 50%;
+  border: none;
+  border-bottom: 1px solid white;
+}
+
+.sidenav .body .section .tab button:hover {
+  background-color: #ddd;
+}
+
+.sidenav .body .section .tab button.active {
+  background-color: $sp-navbar-divider-color-right;
+  border: 1px solid white;
+}
+
+.sidenav .body .section .tabcontent {
+  display: none;
+  padding: 0;
+  border: none;
+  color: white;
+}
+
+.sidenav .body .section .tabcontent .search {
+	width: 100%; 
+}
+
+.sidenav .body .section .tabcontent input {
+	color: black;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.sidenav .body .section .tabcontent .listslinks {
+  margin: 0;
+  padding: 0;
+}
+
+.sidenav .body .section .tabcontent .active {
+	background-color: maroon;
+  font-weight: bold;
+}
+
+.sidenav .body .section .tabcontent .active:hover {
+  background-color: maroon;
+  color: white;
+}
+
+.sidenav .body .section .tabcontent .listscontent {
+	width: 100%;
+  margin: auto;
+  color: white;
+  background-color: $sp-navbar-divider-color-right;
+  display: none;
+  border: 2px solid LightGray;
+}
+
+.sidenav .body .section .tabcontent .row {
+  width: 100%;
+  margin: auto;
+  padding: 0;
+}
+
+.sidenav .body .section .tabcontent .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.sidenav .body .section .tabcontent .row .col-left {
+	float: left;
+  text-align: left;
+  width: 75%;
+  border: none;
+  padding-left: 6px;
+}
+
+.sidenav .body .section .tabcontent button {
+  display: block;
+	background: transparent;
+  color: white;
+  border: none;
+  border: none;
+  width: 100%;
+  height: 2.5em;
+}
+
+.sidenav .body .section .tabcontent button:hover {
+  color: maroon;
+  background-color: white;
+}
+
+.sidenav .body .section .tabcontent .row .col-right {
+  float: right;
+  text-align: center;
+  width: 25%;
+  border: none;
+  padding-right: 6px;
+}
+
+.sidenav .body .section .tabcontent .row .col-right .bubble {
+	background-color: DarkGray;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+}
+
+.sidenav .body .section .active{
+  display: block;
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>vasi_side_nav</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>VASI Side Nav</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {  /* populate the 'data' object */  /* e.g., data.table = $sp.getValue('table'); */})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>timothy.baker</sys_created_by>
+        <sys_created_on>2019-08-14 14:31:53</sys_created_on>
+        <sys_id>07caedcddb133300e16bd426ca9619a2</sys_id>
+        <sys_mod_count>439</sys_mod_count>
+        <sys_name>VASI Side Nav</sys_name>
+        <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+        <sys_update_name>sp_widget_07caedcddb133300e16bd426ca9619a2</sys_update_name>
+        <sys_updated_by>timothy.baker</sys_updated_by>
+        <sys_updated_on>2019-08-16 13:06:15</sys_updated_on>
+        <template><![CDATA[<div id="vasi_side_nav" class="sidenav">
+  <div ng-show="isNavOpen" class="title">
+    	Systems Inventory (VASI)
+  </div>
+  <div ng-show="isNavOpen" class="btn">
+  	<button title="Close Nav Bar" onclick="closeNav();">
+     	&lt;
+    </button>
+  </div>
+  <div ng-show="!isNavOpen" class="btn">
+    <button title="Open Nav Bar" onclick="openNav();">
+      &gt;
+    </button>
+  </div>
+  <div id="body" class="body" ng-show="isNavOpen">
+  	<div class="section">
+    	<div class="tab">
+        <button onclick="toggleListsOrSearch(event, 'lists');" class="tablinks active">
+          Lists
+        </button>
+        <button onclick="toggleListsOrSearch(event, 'search');" class="tablinks">
+        	Search
+        </button>
+      </div> 
+      <div id="lists" class="tabcontent active">
+        <button onclick="toggleListsContent(event, 'va_systems')" class="listslinks">
+          <div class="row">
+            <div class="col-left">
+          		VA Systems
+          	</div>
+          	<div class="col-right">
+          		<div class="bubble">
+            		{{c.lists.va_systems.length}}
+            	</div>  
+            </div>
+          </div>
+        </button>        
+        <div id="va_systems" class="listscontent">
+        	EMPTY!
+        </div>
+        <button onclick="toggleListsContent(event, 'system_of_systems')" class="listslinks">
+          <div class="row">
+            <div class="col-left">
+          		System of Systems
+          	</div>
+          	<div class="col-right">
+          		<div class="bubble">
+            		{{c.lists.system_of_systems.length}}
+            	</div>  
+            </div>
+          </div>
+        </button>        
+        <div id="system_of_systems" class="listscontent">
+        	EMPTY!
+        </div>
+        <button onclick="toggleListsContent(event, 'systems_by_alphabet')" class="listslinks">
+          <div class="row">
+            <div class="col-left">
+          		Systems by Alphabet
+          	</div>
+          	<div class="col-right">
+          		<div class="bubble">
+            		{{c.lists.systems_by_alphabet.length}}
+            	</div>  
+            </div>
+          </div>
+        </button>        
+        <div id="systems_by_alphabet" class="listscontent">
+        	EMPTY!
+        </div>
+        <button onclick="toggleListsContent(event, 'systems_by_criticality')" class="listslinks">
+          <div class="row">
+            <div class="col-left">
+          		Systems by Criticality
+          	</div>
+          	<div class="col-right">
+          		<div class="bubble">
+            		{{c.lists.systems_by_criticality.length}}
+            	</div>  
+            </div>
+          </div>
+        </button>        
+        <div id="systems_by_criticality" class="listscontent">
+        	EMPTY!
+        </div>
+        <button onclick="toggleListsContent(event, 'systems_by_organization')" class="listslinks">
+          <div class="row">
+            <div class="col-left">
+          		Systems by Organization
+          	</div>
+          	<div class="col-right">
+          		<div class="bubble">
+            		{{c.lists.systems_by_organization.length}}
+            	</div>  
+            </div>
+          </div>
+        </button>        
+        <div id="systems_by_organization" class="listscontent">
+        	EMPTY!
+        </div>
+        <button onclick="toggleListsContent(event, 'development_systems')" class="listslinks">
+          <div class="row">
+            <div class="col-left">
+            	Development Systems
+          	</div>
+          	<div class="col-right">
+          		<div class="bubble">
+            		{{c.lists.development_systems.length}}
+            	</div>  
+            </div>
+          </div>
+        </button>        
+        <div id="development_systems" class="listscontent">
+        	EMPTY!
+        </div>  
+        <button onclick="toggleListsContent(event, 'all_systems_and_non_systems')" class="listslinks">
+          <div class="row">
+            <div class="col-left">
+          		Systems by Criticality
+          	</div>
+          	<div class="col-right">
+          		<div class="bubble">
+            		{{c.lists.all_systems_and_non_systems.length}}
+            	</div>  
+            </div>
+          </div>
+        </button>        
+        <div id="all_systems_and_non_systems" class="listscontent">
+        	EMPTY!
+        </div>        
+        <button onclick="toggleListsContent(event, 'inactive_systems')" class="listslinks">
+          <div class="row">
+            <div class="col-left">
+          		Inactive Systems
+          	</div>
+          	<div class="col-right">
+          		<div class="bubble">
+            		{{c.lists.inactive_systems.length}}
+            	</div>  
+            </div>
+          </div>
+        </button>        
+        <div id="inactive_systems" class="listscontent">
+        	EMPTY!
+        </div>        
+        <button onclick="toggleListsContent(event, 'invalid_systems')" class="listslinks">
+          <div class="row">
+            <div class="col-left">
+          		Invalid Systems
+          	</div>
+          	<div class="col-right">
+          		<div class="bubble">
+            		{{c.lists.invalid_systems.length}}
+            	</div>  
+            </div>
+          </div>
+        </button>        
+        <div id="invalid_systems" class="listscontent">
+        	EMPTY!
+        </div>      
+     	</div>
+      <div id="search" class="tabcontent">
+      	<input id="search" type="search" placeholder="Search...">
+      </div>
+    </div>
+    <div class="section">
+    	<a href="">
+        <span class="glyphicon glyphicon-folder-open"></span>
+        &nbsp; System Reports
+      </a>
+    </div>
+    <div class="section">
+      <a href="">Product Line Dashboard</a>
+    </div>
+    <div class="section">
+    	<a href="">Legacy Systems Modernization (LSM) Dashboard</a> 
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

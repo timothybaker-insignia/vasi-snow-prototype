@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_header_footer">
+    <sp_header_footer action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function ($scope, $rootScope, spUtil, i18n, $location, $uibModal, cabrillo, $timeout, spPreference) {
+	$scope.userID = $scope.user.sys_id;
+	$scope.appFilterQuery = this.data.appFilter;
+	if (cabrillo.isNative())
+		$scope.isViewNative = true;
+	
+	$scope.openPopUp = function() {
+		var url = "$chat_support.do?queueID=" + $scope.data.connect_support_queue_id;
+		var popup = window.open (url, "popup", "width=900, height=600"); 
+	};
+	
+	$scope.menuLabel = i18n.getMessage('Click to open a list of items');
+
+	$scope.openLogin = function () {
+		$scope.modalInstance = $uibModal.open({
+			templateUrl: 'modalLogin',
+			scope: $scope
+		});
+	};
+
+	$rootScope.$on('sp.avatar_changed', function() {
+		$scope.userID = "";
+		$timeout(function(){
+			$scope.userID = $scope.user.sys_id;
+		});
+	});
+
+	$scope.isHomepage = function() {
+		if (!$scope.page.id)
+			return true;
+
+		if ($scope.page.id == $scope.portal.homepage_dv)
+			return true;
+
+		return false;
+	};
+	
+	$scope.$on('table-filter-changed', function(event, filter/*GlideQuery*/, table){
+		//APMUserFlowState.setAppGlideQuery(filter);
+		updateFilter(filter);
+	});
+	
+	function updateFilter(filter) {
+		var queryString;
+		if(filter)
+			queryString = filter.toQueryString();
+		$scope.data.apm_app_filter = queryString||'';
+		$scope.data.operation = 'save_preference';
+		$scope.server.update().then(function(){
+			$scope.appFilterQuery = $scope.data.apm_app_filter;
+			/* Raising event to clear filter */
+			if(!$scope.data.apm_app_filter)
+				$rootScope.$broadcast('snfilter:initialize_query','');
+			$rootScope.$broadcast('apm-app-filter-updated', filter);
+		});
+	}
+	
+	function clearFilter() {
+		updateFilter();
+	}
+	
+	$scope.showFilter = function() {
+		$rootScope.$broadcast('open-table-filter-modal', $scope.appFilterQuery);
+	};
+	
+	$scope.confirmClearFilter = function() {
+		$scope.$broadcast('open-confirm-dialog', 'Business Application filter', 
+							  'Clearing filter is applicable to all other pages. Do you want to continue ?',
+							  'apm-filter-clear-cofirm');
+		$scope.$on('confirm-dialog-close', function(event, response, id){
+			if(Boolean(response)){
+				clearFilter();
+			}
+		});
+	};
+	
+	$scope.hideAppFilter = function(){
+		var params = $location.search();
+		return params['hide_apm_app_filter'] && params['hide_apm_app_filter'] == 'true';
+	}
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.clickableIcon {&#13;
+  cursor: pointer;&#13;
+}&#13;
+&#13;
+.clickableIcon:hover, .clickableIcon:focus {&#13;
+  outline: 3px auto -webkit-focus-ring-color;&#13;
+   outline-offset: -2px;&#13;
+}&#13;
+&#13;
+.navbar {&#13;
+  transition: 250ms opacity ease-in-out; &#13;
+  -webkit-transition: 250ms opacity ease-in-out; &#13;
+  border: 0;&#13;
+  border-bottom: 4px solid $sp-navbar-divider-color;&#13;
+  z-index: 2;&#13;
+}&#13;
+&#13;
+.navbar-fade {&#13;
+  opacity: 0.4;&#13;
+}&#13;
+&#13;
+.navbar-inverse .navbar-toggle {&#13;
+  border-color: rgba(255, 255, 255, 0.25);&#13;
+}&#13;
+&#13;
+.nav &gt; li &gt; a {&#13;
+  max-height: 50px;&#13;
+}&#13;
+&#13;
+.navbar-brand {&#13;
+  height: 50px;&#13;
+  padding: 0;&#13;
+}&#13;
+&#13;
+.navbar-brand img, .navbar-brand span {&#13;
+  margin-left: $sp-logo-margin-x;&#13;
+  margin-right: $sp-logo-margin-x;&#13;
+  margin-top: $sp-logo-margin-y;&#13;
+  margin-bottom: $sp-logo-margin-y;&#13;
+  display: block;&#13;
+  max-height: $sp-logo-max-height;&#13;
+  max-width: $sp-logo-max-width;&#13;
+  position: relative;&#13;
+  top: 50%;&#13;
+  -webkit-transform: translateY(-50%);&#13;
+  -ms-transform: translateY(-50%);&#13;
+  transform: translateY(-50%);&#13;
+}&#13;
+.breadcrumb-container {&#13;
+  background-color: $panel-bg;&#13;
+}&#13;
+&#13;
+/* for mobile app */&#13;
+.navbar-inverse.is-native {&#13;
+  background-color: #405060;&#13;
+}&#13;
+&#13;
+nav{&#13;
+ margin-bottom: 0px;&#13;
+ border-radius: 0px; &#13;
+}&#13;
+&#13;
+.navbar-collapse{&#13;
+padding-right: 0px;&#13;
+}&#13;
+&#13;
+.navbar-nav {&#13;
+margin: 0px;&#13;
+}&#13;
+&#13;
+.active-filter {&#13;
+  color:#278efc ! important;&#13;
+}&#13;
+&#13;
+.app-filter-container {&#13;
+  cursor:pointer;&#13;
+}&#13;
+&#13;
+.app-filter-avatar {&#13;
+	float: right;&#13;
+    margin:-6px -10px 0 0px;&#13;
+}&#13;
+&#13;
+.active-filter-label {&#13;
+	color: white;&#13;
+    background-color: #278efc;&#13;
+    padding: 5px;&#13;
+    border-radius: 2px;&#13;
+    margin-right: 3px;&#13;
+}&#13;
+&#13;
+.filter-widget {&#13;
+  /* Filter widget CSS */&#13;
+  .ng-filter-widget-row {&#13;
+    padding-right: 0px !important;&#13;
+  }&#13;
+  .input-group-transparent {&#13;
+    position: relative;&#13;
+  }&#13;
+  .input-group-addon-transparent {&#13;
+      position: absolute;&#13;
+      left: 6px;&#13;
+      width: 22px;&#13;
+      z-index: 3;&#13;
+      font-size: 18px;&#13;
+  }&#13;
+  .input-group-transparent .input-group-addon-transparent ~ input {&#13;
+      padding-left: 28px;&#13;
+  }&#13;
+  .form-control-search {&#13;
+      border-radius: 9999px;&#13;
+  }&#13;
+&#13;
+  ul {&#13;
+    padding-left: 0px !important;&#13;
+    overflow-x: hidden;&#13;
+    margin: 0px;&#13;
+  }&#13;
+  .filter-fields-list-popover .filter-fields-list .filter-field-sets-container ul li a {&#13;
+      font-size: 13px;&#13;
+      font-weight: normal;&#13;
+  }&#13;
+  .filter-fields-list-popover .filter-fields-list .filter-field-sets-container ul li a:focus ~ .btn.btn-icon .selected-icon {&#13;
+      color: white;&#13;
+      display: block;&#13;
+  }&#13;
+  .filter-fields-list-popover .filter-fields-list .filter-field-sets-container ul li .btn .btn-icon {&#13;
+      top: 0;&#13;
+      right: 0;&#13;
+      position: absolute;&#13;
+      height: 28px;&#13;
+      width: 28px;&#13;
+      background-color: transparent;&#13;
+      border-radius: 0;&#13;
+      font-size: 16px;&#13;
+  }&#13;
+  .add-dot-walk-list {&#13;
+    padding: 0px !important;&#13;
+  }&#13;
+  .icon-chevron-right-circle {&#13;
+    line-height: 0;&#13;
+  }&#13;
+  .icon-chevron-right-circle-solid {&#13;
+    line-height: 0;&#13;
+  }&#13;
+&#13;
+  [class ^= "icon-"]: before, [class *= "icon-"]: before {&#13;
+      display: inline-block;&#13;
+      vertical-align: middle;&#13;
+      line-height: 1;&#13;
+      font-weight: normal;&#13;
+      font-style: normal;&#13;
+      speak: none;&#13;
+      text-decoration: inherit;&#13;
+      text-transform: none;&#13;
+      text-rendering: optimizeLegibility;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;&#13;
+  }&#13;
+}&#13;
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>vasi</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>VASI</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[// Defines the support queue ID that will be linked to by the Live Chat link in header
+data.connect_support_queue_id = $sp.getValue('sp_chat_queue');
+data.login_page = $sp.getValue('login_page');
+var menu = $sp.getValue("sp_rectangle_menu");
+data.menu = $sp.getWidgetFromInstance(menu);
+if (data.menu && data.menu.data) {
+	data.menu.data.replace = true;
+	// Hide login if menu already has link to login
+	data.hasLogin = false;
+	if (data.menu.data.menu.items) {
+		for(var i in data.menu.data.menu.items) {
+			var item = data.menu.data.menu.items[i];
+			if (item.type == 'page' && item.sp_page == data.login_page)
+				data.hasLogin = true;
+		}
+	}
+}
+
+data.loginWidget = $sp.getWidgetFromInstance('login-modal');
+data.typeahead = $sp.getWidgetFromInstance('typeahead-search');
+
+var currentUser = gs.getUser(); 
+if(input && input.operation == 'save_preference') {
+	if(currentUser)
+		currentUser.savePreference('apm_app_filter', input.apm_app_filter||'');
+} 
+if(currentUser)
+	data.appFilter = currentUser.getPreference('apm_app_filter');]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_header_footer</sys_class_name>
+        <sys_created_by>timothy.baker</sys_created_by>
+        <sys_created_on>2019-08-07 18:43:47</sys_created_on>
+        <sys_id>20e02a32db073300e16bd426ca961955</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>VASI</sys_name>
+        <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+        <sys_update_name>sp_header_footer_20e02a32db073300e16bd426ca961955</sys_update_name>
+        <sys_updated_by>timothy.baker</sys_updated_by>
+        <sys_updated_on>2019-08-07 18:43:47</sys_updated_on>
+        <template><![CDATA[<div>
+  <nav class="navbar-inverse" ng-class="::{'navbar':!isViewNative, 'is-native': isViewNative}"
+       role="navigation">
+    <div ng-show="::!isViewNative" class="navbar-header">
+      <a class="navbar-brand" role="presentation" ng-if="::!portal.logo" href="?id={{::portal.homepage_dv}}"><span>{{::portal.title}}</span></a>
+      <a class="navbar-brand navbar-brand-logo" ng-if="::portal.logo" href="?id={{::portal.homepage_dv}}" aria-label="${Go to homepage}">
+        <img ng-src="{{::portal.logo}}" role="presentation" title="ServiceNow" alt="portal logo"/><span class="sr-only">${Service Now}</span>
+      </a>
+
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sp-nav-bar">
+        <span class="sr-only">${Toggle navigation}</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div sp-navbar-toggle="" class="collapse navbar-collapse navbar-right" id="sp-nav-bar">
+      <!-- Include The Menu -->
+      <!-- <sp-widget widget="data.menu"></sp-widget> -->
+      <!-- Application Filter -->
+      <ul ng-if="showAPMFilter" class="nav navbar-nav">
+        <li ng-hide="hideAppFilter()">
+          <a class="app-filter-container" ng-class="{'active-filter': appFilterQuery}" >
+          	<span class="fa fa-filter fa-2x app-filter-avatar clickableIcon" ng-click="showFilter()" role="button" tabindex="0" >
+             <span class="sr-only">${show filter}</span>
+            </span>
+            <span ng-show="appFilterQuery" class="active-filter-label clickableIcon" ng-click="confirmClearFilter()" role="button" tabindex="0">
+               <span >${Filter in On}</span>
+              	<span class="fa fa-times"></span>
+            </span>
+          </a>
+        </li>
+      </ul>
+      <ul ng-if="::(!user.logged_in && page.id != portal.login_page_dv && !data.hasLogin)" class="nav navbar-nav">
+        <li><a href="javascript:void(0)" ng-click="openLogin()">${Login}</a></li>
+      </ul>
+      <ul ng-if="::user.logged_in" class="nav navbar-nav">
+        <!-- chat, avatar, and logout -->
+        <li ng-if="::data.connect_support_queue_id"><a href ng-click="openPopUp()">${Live Chat}</a></li>
+        <li class="dropdown hidden-xs">
+		  <a href="javascript:void(0)" role="button" aria-label="{{::user.name}}" class="dropdown-toggle" aria-label="{{menuLabel}}" data-toggle="dropdown" aria-expanded="false">
+            <span class="navbar-avatar"><sn-avatar class="avatar-small-medium" primary="userID" /></span>
+            <span class="visible-lg-inline">{{::user.name}}</span>
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-expanded="false" >
+            <li role="presentation"><a role="menuitem" aria-label="${Profile}" ng-href="?id=user_profile&sys_id={{::user.sys_id}}">${Profile}</a></li>
+            <li role="presentation"><a role="menuitem" ng-href="{{::portal.logoutUrl}}">${Logout}</a></li>
+          </ul>
+        </li>
+        <li class="visible-xs-block"><a ng-href="?id=user_profile&sys_id={{::user.sys_id}}"><span class="navbar-avatar"><sn-avatar class="avatar-small-medium" primary="userID" /></span>{{::user.name}}</a></li>
+        <li class="visible-xs-block"><a ng-href="{{::portal.logoutUrl}}">${Logout}</a></li>
+      </ul>
+    </div>
+  </nav>
+  <filter-widget-modal ng-if="showAPMFilter" class="filter-widget" title="${Set Business Application filter}" table="cmdb_ci_business_app" encoded-query="appFilterQuery"></filter-widget-modal>
+  <simple-confirm-dialog id="apm-filter-clear-cofirm"  title="${Set Business Application filter}"></simple-confirm-dialog>
+</div>]]></template>
+    </sp_header_footer>
+</record_update>

@@ -4,19 +4,72 @@
         <client_script><![CDATA[function($scope, $timeout) {
   /* widget controller */
   var c = this;
-	Status.innerHTML="";
-	Report.innerHTML="";
+	jsonStatus.innerHTML="";
+	jsonReport.innerHTML="";
 	$scope.flag = {};
 	$scope.flag.showInsert = false;
 	$scope.flag.showOverwrite = false;
 	
 	window.clearDoms = function(event){
-		Status.innerHTML="";
-		Report.innerHTML="";	
+		jsonStatus.innerHTML="";
+		jsonReport.innerHTML="";	
 		$timeout(function(){		
 			$scope.flag.showOverwrite = false;
 			$scope.flag.showInsert = false;
 		}, 10);
+	}
+	
+	window.jsonTemplate = function(event){
+		var input = {};
+		input.action = 'json template';
+		c.server.get(input).then(function(response){
+			var jsonTemplate = response.data.jsonTemplate;
+			var contentType = "application/json";
+			var fileName = "vasi-json-template";
+			var a = document.createElement("a");
+			var file = new Blob([jsonTemplate], {type: contentType});
+			a.href = URL.createObjectURL(file);
+			a.download = fileName;
+			a.click();		
+		});
+	}
+	
+	window.xlsxTemplate = function(event){
+		var input = {};
+		input.action = "xlsx template";
+		c.server.get(input).then(function(response){
+			var xlsxData = response.data.xlsxData;
+			console.log(xlsxData);
+			var s2abs = function(s) { 
+				var buf = new ArrayBuffer(s.length); //convert s to arrayBuffer	
+				var view = new Uint8Array(buf);  //create uint8array as viewer
+				for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF; //convert to octet
+				return buf;    
+			}
+			var test = XLSX.utils.sheet_to_json({"test":"test"});
+			var worksheet = XLSX.utils.aoa_to_sheet(xlsxData);
+			var xlsxTemplate = XLSX.utils.book_new();
+			xlsxTemplate.Props = {
+				Title: "vasi-xlsx-template"
+			};
+			xlsxTemplate.SheetNames.push("Systems");
+			xlsxTemplate.Sheets["Systems"] = worksheet;
+			var wbout = XLSX.write(xlsxTemplate, {bookType:'xlsx', type: 'binary'});
+			var octet_stream = s2abs(wbout);
+			var xlsxTemplate = XLSX.utils.book_new();
+			var contentType = "application/octet-stream";
+			var fileName = "vasi-json-template";
+			var a = document.createElement("a");
+			var file = new Blob([octet_stream], {type: contentType});
+			a.href = URL.createObjectURL(file);
+			a.download = fileName;
+			a.click();	
+		});
+		
+	}
+	
+	window.csvTemplate = function(event){
+		
 	}
 	
 	window.readJson = function(event){
@@ -32,20 +85,20 @@
 				input.record = c.new_record;
 				input.action = 'check_record';
 				c.server.get(input).then(function(response){
-					Report.innerHTML=response.data.report;
+					jsonReport.innerHTML=response.data.report;
 				  if(response.data.record_exists){
 						if(response.data.record_contains_updates){
 							$timeout(function(){
 								$scope.flag.showOverwrite = true;
 							}, 10);
 						}
-						Status.innerHTML="<font color=green>Upload successful - Record already exists.</font>";
+						jsonStatus.innerHTML="<font color=green>Upload successful - Record already exists.</font>";
 						$timeout(function(){
 							$scope.flag.showInsert = false;
 						}, 10);
 					}
 					else {
-						Status.innerHTML="<font color=green>Upload successful - New record detected.</font>";
+						jsonStatus.innerHTML="<font color=green>Upload successful - New record detected.</font>";
 						$timeout(function(){		
 							$scope.flag.showOverwrite = false;
 							$scope.flag.showInsert = true;
@@ -55,8 +108,8 @@
 			}
 		}
 		else {
-			Report.innerHTML="";
-			Status.innerHTML="<font color='red'>Upload Failed - Invalid file format.</font>";
+			jsonReport.innerHTML="";
+			jsonStatus.innerHTML="<font color='red'>Upload Failed - Invalid file format.</font>";
 			$timeout(function(){
 				$scope.flag.showInsert = false;
 				$scope.flag.showOverwrite = false;
@@ -65,8 +118,8 @@
 	}
 	
 	window.addSystem = function(event){
-		Status.innerHTML="";
-		Report.innerHTML="";
+		jsonStatus.innerHTML="";
+		jsonReport.innerHTML="";
 		$timeout(function(){
 			$scope.flag.showInsert = false;
 		}, 10);
@@ -76,17 +129,17 @@
 		c.server.get(input).then(function(response){
 			var sys_id=response.data.record_id;
 			if(sys_id.length == 32){
-				Report.innerHTML='<font color=green>Record inserted successfully!</font>'
+				jsonReport.innerHTML='<font color=green>Record inserted successfully!</font>'
 			}
 			else{
-				Report.innerHTML='<font color=red>Failed to insert record!</font>'
+				jsonReport.innerHTML='<font color=red>Failed to insert record!</font>'
 			}		
 		});
 	}
 	
 	window.updateSystem = function(event){
-		Status.innerHTML="";
-		Report.innerHTML="";
+		jsonStatus.innerHTML="";
+		jsonReport.innerHTML="";
 		$timeout(function(){
 			$scope.flag.showOverwrite = false;
 		}, 10);
@@ -96,7 +149,7 @@
 		c.server.get(input).then(function(response){
 			var sys_id=response.data.record_id;
 			if(sys_id && sys_id.length == 32){
-				Report.innerHTML='<font color=green>Record updated successfully!</font>'
+				jsonReport.innerHTML='<font color=green>Record updated successfully!</font>'
 			}
 			else{
 				Report.innerHTML='<font color=red>Failed to update record!</font>'
@@ -105,7 +158,29 @@
 	}
 }]]></client_script>
         <controller_as>c</controller_as>
-        <css/>
+        <css>.row{
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.left-column{
+  float: left;
+  width: 50%;
+}
+
+.right-column{
+  float: right;
+  padding-left: 60px;
+  width: 50%;
+}
+</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -130,7 +205,7 @@
 	
 	function updateRecord(record) {
 			var gr = new GlideRecord('x_368247_vasi_prot_systems_inventory');
-			gr.get('id', record.id);
+			gr.get('vasi_id', record.vasi_id);
 			for(var key in record){
 				gr[key] = record[key];
 			}				
@@ -140,32 +215,21 @@
 	function newRecord(nr) {
 		var gr = new GlideRecord('x_368247_vasi_prot_systems_inventory');
 		gr.initialize();
-		gr.id = nr.id;
-		gr.child_systems = nr.child_systems;
-		gr.description = nr.description;
-		gr.information_owner = nr.information_owner;
-		gr.name = nr.name;
-		gr.parent_systems = nr.parent_systems;
-		gr.product_line = nr.product_line;
-		gr.receiving_organization = nr.receiving_organization;
-		gr.sponsor_organization = nr.sponsor_organization;
-		gr.status = nr.status;
-		gr.system_acronym = nr.system_acronym;
-		gr.system_components = nr.system_components;
-		gr.system_stakeholders = nr.system_stakeholders;
-		gr.type = nr.type;
-		return gr.update();
+		for(var key in record){
+				gr[key] = record[key];
+			}				
+			return gr.update();
 	}
 	
 	function systemExists(record) {
 		var gr = new GlideRecord('x_368247_vasi_prot_systems_inventory');
-		return gr.get('id', record.id);
+		return gr.get('vasi_id', record.vasi_id);
 	}
 	
 	function glideRecordToObject(record){
 			var obj = {};
 			var gr = new GlideRecord('x_368247_vasi_prot_systems_inventory');
-			gr.get('id', record.id);
+			gr.get('vasi_id', record.vasi_id);
 			for(var key in gr){
 				obj[key] = gr.getDisplayValue(key);
 			}		
@@ -207,6 +271,51 @@
 		}
 	}
 	
+	function getFieldsArray(){
+			var field_array = [];
+			var sys_fields = [
+				"sys_class_name",
+				"sys_created_by",
+				"sys_created_on",
+				"sys_id",
+				"sys_meta",
+				"sys_mod_count",
+				"sys_tags",
+				"sys_updated_by",
+				"sys_updated_on"
+			];	
+			var gr = new GlideRecord('x_368247_vasi_prot_systems_inventory');
+			gr.initialize();
+			for(var key in gr){
+				field_array.push(key);
+			}				
+			field_array.sort();
+			var no_sys_array = [];
+			for(var i=0; i<field_array.length; i++){
+				if(sys_fields.indexOf(field_array[i]) == -1.0){
+					no_sys_array.push(field_array[i]);
+				}
+			}
+			return no_sys_array;
+	}
+	
+	if(input && input.action == 'json template'){
+			var field_dict = {};
+			var field_array = getFieldsArray();
+			for(var i=0; i<field_array.length; i++){
+					field_dict[field_array[i]] = "";
+			}
+			data.jsonTemplate = JSON.stringify(field_dict, null, '\t');
+	}
+	
+	if(input && input.action == 'xlsx template'){
+		data.xlsxData = [getFieldsArray()];
+	}
+	
+	if(input && input.action == 'csv template'){
+		
+	}
+	
 	if(input && input.action == 'check_record'){
 		if(systemExists(input.record)){
 			 data.record_exists = true;
@@ -232,33 +341,85 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-07-10 15:59:38</sys_created_on>
         <sys_id>033f2df5dba23300e16bd426ca961931</sys_id>
-        <sys_mod_count>510</sys_mod_count>
+        <sys_mod_count>662</sys_mod_count>
         <sys_name>Add System</sys_name>
         <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
         <sys_policy/>
         <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
         <sys_update_name>sp_widget_033f2df5dba23300e16bd426ca961931</sys_update_name>
         <sys_updated_by>timothy.baker</sys_updated_by>
-        <sys_updated_on>2019-07-17 18:00:37</sys_updated_on>
+        <sys_updated_on>2019-07-25 12:39:42</sys_updated_on>
         <template><![CDATA[<div>
   <body>
     <h1>
-      Add New System
+      Add or Update System(s)
     </h1>
     <div>
       <label>
         <h4>
         	Load from JSON file
         </h4>
-  			<input onclick="this.value=null; clearDoms(event);" type="file" accept="application/*" onchange="readJson(event)">
-        <div id=Status></div>
+        <div class="row">
+          <div class="left-column">
+          	<input onclick="this.value=null; clearDoms(event);" type="file" accept=".json,.JSON" onchange="readJson(event)">
+          </div>
+          <div class="right-column">
+     				<button onclick="jsonTemplate(event)">JSON Template</button>
+          </div>
+        </div>
+        <div id=jsonStatus></div>
         <br>
-        <div id=Report></div>
+        <div id=jsonReport></div>
         <br>
 				<button ng-show="flag.showInsert" onclick="addSystem(event)">Insert Record</button>
         <button ng-show="flag.showOverwrite" onclick="updateSystem(event)">Overwrite Record</button>
 			</label>
     </div>
+    
+    <div>
+      <label>
+      	<h4>
+          Load from XLSX file
+        </h4>
+        <div class="row">
+          <div class="left-column">
+          	<input onclick="this.value=null; clearDoms(event);" type="file" accept=".xlsx,.XLSX" onchange="readXlsx(event)">
+          </div>
+          <div class="right-column">
+     				<button onclick="xlsxTemplate(event)">XLSX Template</button>
+          </div>
+        </div>
+        <div id=jsonStatus></div>
+        <br>
+        <div id=jsonReport></div>
+        <br>
+				<button ng-show="flag.showInsert" onclick="addSystem(event)">Insert Record</button>
+        <button ng-show="flag.showOverwrite" onclick="updateSystem(event)">Overwrite Record</button>
+      </label>
+    </div>
+    
+    <div>
+      <label>
+      	<h4>
+          Load from CSV File &nbsp;
+        </h4>
+        <div class="row">
+          <div class="left-column">
+          	<input onclick="this.value=null; clearDoms(event);" type="file" accept=".csv,.CSV" onchange="readCsv(event)">
+          </div>
+          <div class="right-column">
+     				<button onclick="csvTemplate(event)">CSV Template</button>
+          </div>
+        </div>
+        <div id=jsonStatus></div>
+        <br>
+        <div id=jsonReport></div>
+        <br>
+				<button ng-show="flag.showInsert" onclick="addSystem(event)">Insert Record</button>
+        <button ng-show="flag.showOverwrite" onclick="updateSystem(event)">Overwrite Record</button>
+      </label>
+    </div>
+    
     <div ng-show=false>
       <sp-widget widget="data.addNewSystemWidget"></sp-widget>
     </div>

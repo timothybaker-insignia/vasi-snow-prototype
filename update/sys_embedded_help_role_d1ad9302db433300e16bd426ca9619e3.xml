@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_embedded_help_role">
+    <sys_embedded_help_role action="INSERT_OR_UPDATE">
+        <order>1000</order>
+        <role display_value="sn_dd_vasi_prototype_allmetadata" name="sn_dd_vasi_prototype_allmetadata">ddad9302db433300e16bd426ca9619e0</role>
+        <sys_class_name>sys_embedded_help_role</sys_class_name>
+        <sys_created_by>timothy.baker</sys_created_by>
+        <sys_created_on>2019-08-05 15:11:53</sys_created_on>
+        <sys_id>d1ad9302db433300e16bd426ca9619e3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ddad9302db433300e16bd426ca9619e0</sys_name>
+        <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+        <sys_update_name>sys_embedded_help_role_d1ad9302db433300e16bd426ca9619e3</sys_update_name>
+        <sys_updated_by>timothy.baker</sys_updated_by>
+        <sys_updated_on>2019-08-05 15:11:53</sys_updated_on>
+    </sys_embedded_help_role>
+</record_update>

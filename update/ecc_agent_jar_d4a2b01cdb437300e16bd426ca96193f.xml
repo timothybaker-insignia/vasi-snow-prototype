@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="ecc_agent_jar">
+    <ecc_agent_jar action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description>testsql</description>
+        <directory>false</directory>
+        <name>testsql</name>
+        <parent/>
+        <source>custom</source>
+        <sys_class_name>ecc_agent_jar</sys_class_name>
+        <sys_created_by>timothy.baker</sys_created_by>
+        <sys_created_on>2019-07-30 16:15:43</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>d4a2b01cdb437300e16bd426ca96193f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>testsql</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="vasi_prototype" source="x_368247_vasi_prot">18ecdf4ddb063300e16bd426ca961977</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="vasi_prototype">18ecdf4ddb063300e16bd426ca961977</sys_scope>
+        <sys_update_name>ecc_agent_jar_d4a2b01cdb437300e16bd426ca96193f</sys_update_name>
+        <sys_updated_by>timothy.baker</sys_updated_by>
+        <sys_updated_on>2019-07-30 16:15:43</sys_updated_on>
+        <version>1.0</version>
+    </ecc_agent_jar>
+    <sys_attachment action="INSERT_OR_UPDATE">
+        <average_image_color/>
+        <chunk_size_bytes>734003</chunk_size_bytes>
+        <compressed>true</compressed>
+        <content_type>application/java-archive</content_type>
+        <file_name>testsql.jar</file_name>
+        <image_height/>
+        <image_width/>
+        <size_bytes>1039</size_bytes>
+        <size_compressed>790</size_compressed>
+        <state>available</state>
+        <sys_created_by>timothy.baker</sys_created_by>
+        <sys_created_on>2019-07-30 16:15:38</sys_created_on>
+        <sys_id>e4b2301cdb437300e16bd426ca961924</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2019-07-30 16:15:48</sys_updated_on>
+        <table_name>ecc_agent_jar</table_name>
+        <table_sys_id>d4a2b01cdb437300e16bd426ca96193f</table_sys_id>
+    </sys_attachment>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAAAA==</data>
+        <length>16</length>
+        <position>0</position>
+        <sys_attachment display_value="testsql.jar" sys_id="e4b2301cdb437300e16bd426ca961924">e4b2301cdb437300e16bd426ca961924</sys_attachment>
+        <sys_created_by>timothy.baker</sys_created_by>
+        <sys_created_on>2019-07-30 16:15:38</sys_created_on>
+        <sys_id>28b2301cdb437300e16bd426ca961924</sys_id>
+    </sys_attachment_doc>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>C/BmZhFh4ODgYLgc9s+PAQmIMLAw+LqGOOp6+rnp+zr6ebq5Bofo+br9O8XA8Nn3zGkfb129i7zeulrnzpzfHGRwxfjB00++Z85cLj3nqaO3LeiExsmzhloenpeZOT8VNbqWMgt5G60R+VKxs2InQ4A3O8etCQdF7YHWOANxANwR3miOEATi3PyU0pxU3cy8tHy95JzE4mLrr/nX7djY2LjZ9MrY1NzY3t35M+XSnJC7Z/ZsqXFjW/fgz6VFT0K2n5kT4sbGqKK5d82RTS5ubGbxGyYYMFsrM7u7eeb1BTp6zTJgVldmVvdojAtKKsxiZmZWZuYxMDRo9hRjC1PQPXaATYw1Ky/BgQHs2qUt8jPzgW6ZDHUtFwMDBwOGazmBOKMkN8eoICVNH+GpXDRlwsjKfBMz8yDeyg046cfkKLImTTqNxVHgTukHFrk5R7rVJPTV5hV4GsTYmF5wmBzp4e/8KP2lozB/XYN8ao1xAgdnbcXV/JVVp8+/v27eoD1HysPgifutYn21v43F55fmKxwNkPksWR7zjn/u8XcRX0ycn0X9CrpvoPK6l8/5ldkLbm7PGZZLJiZqbFmiL7csLnxF+r1SVueVol923H7o5fZPacYlZUm3q9q+s6d84JBc9XX6tU2V0dov+Wf39nXqTuGdEuaWvb8tqsIyZ7FTMmvwrE1G6qcPVCotU9v3IM64W7atTWyhmunv/Zttn52S8wi/wSxasU39d5nGFR8N7moLgw3nA+IWTzus2CdxabKGi+zr18+W1u6QurToqelrg4i3CauqHvm5qRsu5p7jHrqiUczxi9CXxbsnmZ4o5pBM/PVG+OZ2i9yJZ48cVDE78ewZa0ulk/BsDZ0T0zdKHL0XqBNqv2G3yAYO5aBpS6YpqfUVOp1IOD51qz0oIhP5vkUkMjIwGDKBIpKRSYQBkfqRkyQo9aMCXHkB2RRQgkBOKoIoJrRiS8wg7VwMuNMTAhgzoqQuhK2g9IXsL2EUbVGMWFNbgDcrG0iaBQj/Auk/TCAeABzvWo0PBAAA</data>
+        <length>1040</length>
+        <position>1</position>
+        <sys_attachment display_value="testsql.jar" sys_id="e4b2301cdb437300e16bd426ca961924">e4b2301cdb437300e16bd426ca961924</sys_attachment>
+        <sys_created_by>timothy.baker</sys_created_by>
+        <sys_created_on>2019-07-30 16:15:38</sys_created_on>
+        <sys_id>a8b2301cdb437300e16bd426ca961924</sys_id>
+    </sys_attachment_doc>
+</record_update>
